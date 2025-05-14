@@ -1,0 +1,22 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Project Structure Guide
+
+This project is organized as follows:
+
+- The main application code resides in [contextmenu/](mdc:contextmenu), which contains:
+  - [ContentView.swift](mdc:contextmenu/ContentView.swift): Main SwiftUI view.
+  - [contextmenuApp.swift](mdc:contextmenu/contextmenuApp.swift): App entry point.
+  - [contextmenu.entitlements](mdc:contextmenu/contextmenu.entitlements): App entitlements.
+  - [Assets.xcassets/](mdc:contextmenu/Assets.xcassets): Asset catalog for images and resources.
+- The [TokenFile/](mdc:TokenFile) directory contains:
+  - [FinderSync.swift](mdc:TokenFile/FinderSync.swift): Finder Sync extension logic.
+  - [Info.plist](mdc:TokenFile/Info.plist): Extension configuration.
+  - [TokenFile.entitlements](mdc:TokenFile/TokenFile.entitlements): Extension entitlements.
+- The [contextmenuTests/](mdc:contextmenuTests) directory contains unit tests for the main app.
+- The [Media.xcassets/](mdc:Media.xcassets) directory contains additional image assets.
+
+All rules should be placed in the [.cursor/rules/](mdc:.cursor/rules) directory as `.mdc` files, following the Cursor Rules Instructions.

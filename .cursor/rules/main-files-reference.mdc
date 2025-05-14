@@ -1,0 +1,17 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Main Files Reference
+
+This rule lists and briefly describes the main files in the project:
+
+- [contextmenu/ContentView.swift](mdc:contextmenu/ContentView.swift): Main SwiftUI view for the application UI.
+- [contextmenu/contextmenuApp.swift](mdc:contextmenu/contextmenuApp.swift): Application entry point.
+- [contextmenu/contextmenu.entitlements](mdc:contextmenu/contextmenu.entitlements): Entitlements for the main app.
+- [TokenFile/FinderSync.swift](mdc:TokenFile/FinderSync.swift): Finder Sync extension logic.
+- [TokenFile/Info.plist](mdc:TokenFile/Info.plist): Configuration for the Finder Sync extension.
+- [TokenFile/TokenFile.entitlements](mdc:TokenFile/TokenFile.entitlements): Entitlements for the Finder Sync extension.
+- [contextmenuTests/contextmenuTests.swift](mdc:contextmenuTests/contextmenuTests.swift): Unit tests for the main app.
+- [Media.xcassets/Contents.json](mdc:Media.xcassets/Contents.json): Asset catalog contents for additional images.
