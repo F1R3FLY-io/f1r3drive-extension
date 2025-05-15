@@ -11,6 +11,12 @@
 		21803EC42DCCE8CE00522CF4 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21803EC32DCCE8CE00522CF4 /* Media.xcassets */; };
 		21803EC52DCCE8CE00522CF4 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21803EC32DCCE8CE00522CF4 /* Media.xcassets */; };
 		21BA840F2DD5C955000C2641 /* GRPCNIOTransportHTTP2 in Frameworks */ = {isa = PBXBuildFile; productRef = 21BA840E2DD5C955000C2641 /* GRPCNIOTransportHTTP2 */; };
+		21BA852E2DD66596000C2641 /* contextmenuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA852C2DD66596000C2641 /* contextmenuApp.swift */; };
+		21BA852F2DD66596000C2641 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA852A2DD66596000C2641 /* ContentView.swift */; };
+		21BA85302DD66596000C2641 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21BA85292DD66596000C2641 /* Assets.xcassets */; };
+		21BA85312DD66596000C2641 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21BA85292DD66596000C2641 /* Assets.xcassets */; };
+		21BA85322DD66596000C2641 /* contextmenuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA852C2DD66596000C2641 /* contextmenuApp.swift */; };
+		21BA85332DD66596000C2641 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA852A2DD66596000C2641 /* ContentView.swift */; };
 		21F1755F2DD483C100B03A75 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 21F1755E2DD483C100B03A75 /* README.md */; };
 		21F175602DD483C100B03A75 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 21F1755E2DD483C100B03A75 /* README.md */; };
 		21F175642DD485BB00B03A75 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 21F175632DD485BB00B03A75 /* SwiftProtobuf */; };
@@ -77,6 +83,10 @@
 		21803E9E2DCCDB2B00522CF4 /* contextmenuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contextmenuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21803EB52DCCDBFB00522CF4 /* TokenFile.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TokenFile.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		21803EC32DCCE8CE00522CF4 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		21BA85292DD66596000C2641 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		21BA852A2DD66596000C2641 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		21BA852B2DD66596000C2641 /* contextmenu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = contextmenu.entitlements; sourceTree = "<group>"; };
+		21BA852C2DD66596000C2641 /* contextmenuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contextmenuApp.swift; sourceTree = "<group>"; };
 		21F1755E2DD483C100B03A75 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		21FD903B2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "grpc-swift-proto-generator-config.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +169,7 @@
 		21803E7D2DCCDB2A00522CF4 = {
 			isa = PBXGroup;
 			children = (
+				21BA852D2DD66596000C2641 /* contextmenu */,
 				21FD903B2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json */,
 				21F1756F2DD4864B00B03A75 /* Protos */,
 				21F1755E2DD483C100B03A75 /* README.md */,
@@ -177,6 +188,17 @@
 				21803EB52DCCDBFB00522CF4 /* TokenFile.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		21BA852D2DD66596000C2641 /* contextmenu */ = {
+			isa = PBXGroup;
+			children = (
+				21BA85292DD66596000C2641 /* Assets.xcassets */,
+				21BA852A2DD66596000C2641 /* ContentView.swift */,
+				21BA852B2DD66596000C2641 /* contextmenu.entitlements */,
+				21BA852C2DD66596000C2641 /* contextmenuApp.swift */,
+			);
+			path = contextmenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,6 +372,7 @@
 				21F1755F2DD483C100B03A75 /* README.md in Resources */,
 				21803EC52DCCE8CE00522CF4 /* Media.xcassets in Resources */,
 				21FD903D2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json in Resources */,
+				21BA85302DD66596000C2641 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +397,7 @@
 				21F175602DD483C100B03A75 /* README.md in Resources */,
 				21803EC42DCCE8CE00522CF4 /* Media.xcassets in Resources */,
 				21FD903C2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json in Resources */,
+				21BA85312DD66596000C2641 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +408,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21BA852E2DD66596000C2641 /* contextmenuApp.swift in Sources */,
+				21BA852F2DD66596000C2641 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +431,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21BA85322DD66596000C2641 /* contextmenuApp.swift in Sources */,
+				21BA85332DD66596000C2641 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
