@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		21803EC42DCCE8CE00522CF4 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21803EC32DCCE8CE00522CF4 /* Media.xcassets */; };
 		21BA840F2DD5C955000C2641 /* GRPCNIOTransportHTTP2 in Frameworks */ = {isa = PBXBuildFile; productRef = 21BA840E2DD5C955000C2641 /* GRPCNIOTransportHTTP2 */; };
+		21BA84512DD5E276000C2641 /* TokenFile.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 21803EB52DCCDBFB00522CF4 /* TokenFile.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		21F175602DD483C100B03A75 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 21F1755E2DD483C100B03A75 /* README.md */; };
 		21F175642DD485BB00B03A75 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 21F175632DD485BB00B03A75 /* SwiftProtobuf */; };
 		21F175662DD485BB00B03A75 /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 21F175652DD485BB00B03A75 /* SwiftProtobufPluginLibrary */; };
@@ -26,9 +27,41 @@
 		21FD903C2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json in Resources */ = {isa = PBXBuildFile; fileRef = 21FD903B2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		21BA84522DD5E276000C2641 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21803E7E2DCCDB2A00522CF4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21803EB42DCCDBFB00522CF4;
+			remoteInfo = TokenFile;
+		};
+		21BA84572DD5E287000C2641 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21803E7E2DCCDB2A00522CF4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21803EB42DCCDBFB00522CF4;
+			remoteInfo = TokenFile;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		21BA84542DD5E277000C2641 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				21BA84512DD5E276000C2641 /* TokenFile.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		21803EB52DCCDBFB00522CF4 /* TokenFile.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TokenFile.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		21803EC32DCCE8CE00522CF4 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		21BA84422DD5E25A000C2641 /* ContextMenuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContextMenuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F1755E2DD483C100B03A75 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		21FD903B2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "grpc-swift-proto-generator-config.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,6 +83,11 @@
 				21803EBE2DCCDBFB00522CF4 /* Exceptions for "TokenFile" folder in "TokenFile" target */,
 			);
 			path = TokenFile;
+			sourceTree = "<group>";
+		};
+		21BA84432DD5E25A000C2641 /* ContextMenuApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ContextMenuApp;
 			sourceTree = "<group>";
 		};
 		21F1756F2DD4864B00B03A75 /* Protos */ = {
@@ -81,6 +119,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21BA843F2DD5E25A000C2641 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -92,6 +137,8 @@
 				21F1755E2DD483C100B03A75 /* README.md */,
 				21803EC32DCCE8CE00522CF4 /* Media.xcassets */,
 				21803EB62DCCDBFB00522CF4 /* TokenFile */,
+				21BA84432DD5E25A000C2641 /* ContextMenuApp */,
+				21BA84502DD5E276000C2641 /* Frameworks */,
 				21803E872DCCDB2A00522CF4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,8 +147,16 @@
 			isa = PBXGroup;
 			children = (
 				21803EB52DCCDBFB00522CF4 /* TokenFile.appex */,
+				21BA84422DD5E25A000C2641 /* ContextMenuApp.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		21BA84502DD5E276000C2641 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,7 +173,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				21FD90392DD5BD8D00C9426B /* PBXTargetDependency */,
+				21BA849C2DD654A4000C2641 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				21803EB62DCCDBFB00522CF4 /* TokenFile */,
@@ -145,6 +200,31 @@
 			productReference = 21803EB52DCCDBFB00522CF4 /* TokenFile.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		21BA84412DD5E25A000C2641 /* ContextMenuApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21BA844B2DD5E25B000C2641 /* Build configuration list for PBXNativeTarget "ContextMenuApp" */;
+			buildPhases = (
+				21BA843E2DD5E25A000C2641 /* Sources */,
+				21BA843F2DD5E25A000C2641 /* Frameworks */,
+				21BA84402DD5E25A000C2641 /* Resources */,
+				21BA84542DD5E277000C2641 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				21BA84532DD5E276000C2641 /* PBXTargetDependency */,
+				21BA84582DD5E287000C2641 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				21BA84432DD5E25A000C2641 /* ContextMenuApp */,
+			);
+			name = ContextMenuApp;
+			packageProductDependencies = (
+			);
+			productName = ContextMenuApp;
+			productReference = 21BA84422DD5E25A000C2641 /* ContextMenuApp.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -156,6 +236,9 @@
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					21803EB42DCCDBFB00522CF4 = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					21BA84412DD5E25A000C2641 = {
 						CreatedOnToolsVersion = 16.3;
 					};
 				};
@@ -182,6 +265,7 @@
 			projectRoot = "";
 			targets = (
 				21803EB42DCCDBFB00522CF4 /* TokenFile */,
+				21BA84412DD5E25A000C2641 /* ContextMenuApp */,
 			);
 		};
 /* End PBXProject section */
@@ -197,6 +281,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21BA84402DD5E25A000C2641 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -207,12 +298,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21BA843E2DD5E25A000C2641 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		21FD90392DD5BD8D00C9426B /* PBXTargetDependency */ = {
+		21BA84532DD5E276000C2641 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = 21FD90382DD5BD8D00C9426B /* GRPCProtobufGenerator */;
+			target = 21803EB42DCCDBFB00522CF4 /* TokenFile */;
+			targetProxy = 21BA84522DD5E276000C2641 /* PBXContainerItemProxy */;
+		};
+		21BA84582DD5E287000C2641 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 21803EB42DCCDBFB00522CF4 /* TokenFile */;
+			targetProxy = 21BA84572DD5E287000C2641 /* PBXContainerItemProxy */;
+		};
+		21BA849C2DD654A4000C2641 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 21BA849B2DD654A4000C2641 /* GRPCProtobufGenerator */;
 		};
 /* End PBXTargetDependency section */
 
@@ -343,10 +451,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = TokenFile/TokenFile.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
+				DYLD_LIBRARY_PATH = "${BUILT_PRODUCTS_DIR}";
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TokenFile/Info.plist;
@@ -357,6 +467,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenu.TokenFile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -370,10 +481,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = TokenFile/TokenFile.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TokenFile/Info.plist;
@@ -384,10 +496,67 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenu.TokenFile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		21BA844C2DD5E25B000C2641 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = ContextMenuApp/ContextMenuApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.ContextMenuApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		21BA844D2DD5E25B000C2641 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = ContextMenuApp/ContextMenuApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.ContextMenuApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -410,6 +579,15 @@
 			buildConfigurations = (
 				21803EC02DCCDBFB00522CF4 /* Debug */,
 				21803EC12DCCDBFB00522CF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		21BA844B2DD5E25B000C2641 /* Build configuration list for PBXNativeTarget "ContextMenuApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21BA844C2DD5E25B000C2641 /* Debug */,
+				21BA844D2DD5E25B000C2641 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -464,6 +642,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 21BA840D2DD5C955000C2641 /* XCRemoteSwiftPackageReference "grpc-swift-nio-transport" */;
 			productName = GRPCNIOTransportHTTP2;
+		};
+		21BA849B2DD654A4000C2641 /* GRPCProtobufGenerator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21FD902A2DD4FF2B00C9426B /* XCRemoteSwiftPackageReference "grpc-swift-protobuf" */;
+			productName = "plugin:GRPCProtobufGenerator";
 		};
 		21F175632DD485BB00B03A75 /* SwiftProtobuf */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -529,11 +712,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 21FD902A2DD4FF2B00C9426B /* XCRemoteSwiftPackageReference "grpc-swift-protobuf" */;
 			productName = "protoc-gen-grpc-swift";
-		};
-		21FD90382DD5BD8D00C9426B /* GRPCProtobufGenerator */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 21FD902A2DD4FF2B00C9426B /* XCRemoteSwiftPackageReference "grpc-swift-protobuf" */;
-			productName = "plugin:GRPCProtobufGenerator";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
