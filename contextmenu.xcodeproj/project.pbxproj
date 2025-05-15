@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21803EBD2DCCDBFB00522CF4 /* TokenFile.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 21803EB52DCCDBFB00522CF4 /* TokenFile.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		21803EC42DCCE8CE00522CF4 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21803EC32DCCE8CE00522CF4 /* Media.xcassets */; };
-		21803EC52DCCE8CE00522CF4 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21803EC32DCCE8CE00522CF4 /* Media.xcassets */; };
 		21BA840F2DD5C955000C2641 /* GRPCNIOTransportHTTP2 in Frameworks */ = {isa = PBXBuildFile; productRef = 21BA840E2DD5C955000C2641 /* GRPCNIOTransportHTTP2 */; };
-		21F1755F2DD483C100B03A75 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 21F1755E2DD483C100B03A75 /* README.md */; };
 		21F175602DD483C100B03A75 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 21F1755E2DD483C100B03A75 /* README.md */; };
 		21F175642DD485BB00B03A75 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 21F175632DD485BB00B03A75 /* SwiftProtobuf */; };
 		21F175662DD485BB00B03A75 /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 21F175652DD485BB00B03A75 /* SwiftProtobufPluginLibrary */; };
@@ -19,9 +16,6 @@
 		21F1756A2DD485C800B03A75 /* GRPCCodeGen in Frameworks */ = {isa = PBXBuildFile; productRef = 21F175692DD485C800B03A75 /* GRPCCodeGen */; };
 		21F1756C2DD485C800B03A75 /* GRPCCore in Frameworks */ = {isa = PBXBuildFile; productRef = 21F1756B2DD485C800B03A75 /* GRPCCore */; };
 		21F1756E2DD485C800B03A75 /* GRPCInProcessTransport in Frameworks */ = {isa = PBXBuildFile; productRef = 21F1756D2DD485C800B03A75 /* GRPCInProcessTransport */; };
-		21F175A52DD4A02500B03A75 /* GRPCCodeGen in Frameworks */ = {isa = PBXBuildFile; productRef = 21F175A42DD4A02500B03A75 /* GRPCCodeGen */; };
-		21F175A72DD4A02500B03A75 /* GRPCCore in Frameworks */ = {isa = PBXBuildFile; productRef = 21F175A62DD4A02500B03A75 /* GRPCCore */; };
-		21F175A92DD4A02500B03A75 /* GRPCInProcessTransport in Frameworks */ = {isa = PBXBuildFile; productRef = 21F175A82DD4A02500B03A75 /* GRPCInProcessTransport */; };
 		21F175DB2DD4AACD00B03A75 /* NIO in Frameworks */ = {isa = PBXBuildFile; productRef = 21F175DA2DD4AACD00B03A75 /* NIO */; };
 		21F175DD2DD4AACD00B03A75 /* NIOConcurrencyHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = 21F175DC2DD4AACD00B03A75 /* NIOConcurrencyHelpers */; };
 		21F175DF2DD4AACD00B03A75 /* NIOCore in Frameworks */ = {isa = PBXBuildFile; productRef = 21F175DE2DD4AACD00B03A75 /* NIOCore */; };
@@ -30,51 +24,9 @@
 		21FD902C2DD4FF2B00C9426B /* GRPCProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 21FD902B2DD4FF2B00C9426B /* GRPCProtobuf */; };
 		21FD902E2DD4FF2B00C9426B /* protoc-gen-grpc-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 21FD902D2DD4FF2B00C9426B /* protoc-gen-grpc-swift */; };
 		21FD903C2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json in Resources */ = {isa = PBXBuildFile; fileRef = 21FD903B2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json */; };
-		21FD903D2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json in Resources */ = {isa = PBXBuildFile; fileRef = 21FD903B2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		21803E952DCCDB2B00522CF4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21803E7E2DCCDB2A00522CF4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 21803E852DCCDB2A00522CF4;
-			remoteInfo = contextmenu;
-		};
-		21803E9F2DCCDB2B00522CF4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21803E7E2DCCDB2A00522CF4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 21803E852DCCDB2A00522CF4;
-			remoteInfo = contextmenu;
-		};
-		21803EBB2DCCDBFB00522CF4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21803E7E2DCCDB2A00522CF4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 21803EB42DCCDBFB00522CF4;
-			remoteInfo = TokenFile;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		21803EC22DCCDBFB00522CF4 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				21803EBD2DCCDBFB00522CF4 /* TokenFile.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		21803E862DCCDB2A00522CF4 /* contextmenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = contextmenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		21803E942DCCDB2B00522CF4 /* contextmenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contextmenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		21803E9E2DCCDB2B00522CF4 /* contextmenuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contextmenuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21803EB52DCCDBFB00522CF4 /* TokenFile.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TokenFile.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		21803EC32DCCE8CE00522CF4 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		21F1755E2DD483C100B03A75 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -108,30 +60,6 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		21803E832DCCDB2A00522CF4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				21F175A52DD4A02500B03A75 /* GRPCCodeGen in Frameworks */,
-				21F175A72DD4A02500B03A75 /* GRPCCore in Frameworks */,
-				21F175A92DD4A02500B03A75 /* GRPCInProcessTransport in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21803E912DCCDB2B00522CF4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21803E9B2DCCDB2B00522CF4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		21803EB22DCCDBFB00522CF4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -171,9 +99,6 @@
 		21803E872DCCDB2A00522CF4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				21803E862DCCDB2A00522CF4 /* contextmenu.app */,
-				21803E942DCCDB2B00522CF4 /* contextmenuTests.xctest */,
-				21803E9E2DCCDB2B00522CF4 /* contextmenuUITests.xctest */,
 				21803EB52DCCDBFB00522CF4 /* TokenFile.appex */,
 			);
 			name = Products;
@@ -182,73 +107,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		21803E852DCCDB2A00522CF4 /* contextmenu */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 21803EA82DCCDB2B00522CF4 /* Build configuration list for PBXNativeTarget "contextmenu" */;
-			buildPhases = (
-				21803E822DCCDB2A00522CF4 /* Sources */,
-				21803E832DCCDB2A00522CF4 /* Frameworks */,
-				21803E842DCCDB2A00522CF4 /* Resources */,
-				21803EC22DCCDBFB00522CF4 /* Embed Foundation Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				21803EBC2DCCDBFB00522CF4 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				21F1756F2DD4864B00B03A75 /* Protos */,
-			);
-			name = contextmenu;
-			packageProductDependencies = (
-				21F175A42DD4A02500B03A75 /* GRPCCodeGen */,
-				21F175A62DD4A02500B03A75 /* GRPCCore */,
-				21F175A82DD4A02500B03A75 /* GRPCInProcessTransport */,
-			);
-			productName = contextmenu;
-			productReference = 21803E862DCCDB2A00522CF4 /* contextmenu.app */;
-			productType = "com.apple.product-type.application";
-		};
-		21803E932DCCDB2B00522CF4 /* contextmenuTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 21803EAB2DCCDB2B00522CF4 /* Build configuration list for PBXNativeTarget "contextmenuTests" */;
-			buildPhases = (
-				21803E902DCCDB2B00522CF4 /* Sources */,
-				21803E912DCCDB2B00522CF4 /* Frameworks */,
-				21803E922DCCDB2B00522CF4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				21803E962DCCDB2B00522CF4 /* PBXTargetDependency */,
-			);
-			name = contextmenuTests;
-			packageProductDependencies = (
-			);
-			productName = contextmenuTests;
-			productReference = 21803E942DCCDB2B00522CF4 /* contextmenuTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		21803E9D2DCCDB2B00522CF4 /* contextmenuUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 21803EAE2DCCDB2B00522CF4 /* Build configuration list for PBXNativeTarget "contextmenuUITests" */;
-			buildPhases = (
-				21803E9A2DCCDB2B00522CF4 /* Sources */,
-				21803E9B2DCCDB2B00522CF4 /* Frameworks */,
-				21803E9C2DCCDB2B00522CF4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				21803EA02DCCDB2B00522CF4 /* PBXTargetDependency */,
-			);
-			name = contextmenuUITests;
-			packageProductDependencies = (
-			);
-			productName = contextmenuUITests;
-			productReference = 21803E9E2DCCDB2B00522CF4 /* contextmenuUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		21803EB42DCCDBFB00522CF4 /* TokenFile */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21803EBF2DCCDBFB00522CF4 /* Build configuration list for PBXNativeTarget "TokenFile" */;
@@ -297,17 +155,6 @@
 				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
-					21803E852DCCDB2A00522CF4 = {
-						CreatedOnToolsVersion = 16.3;
-					};
-					21803E932DCCDB2B00522CF4 = {
-						CreatedOnToolsVersion = 16.3;
-						TestTargetID = 21803E852DCCDB2A00522CF4;
-					};
-					21803E9D2DCCDB2B00522CF4 = {
-						CreatedOnToolsVersion = 16.3;
-						TestTargetID = 21803E852DCCDB2A00522CF4;
-					};
 					21803EB42DCCDBFB00522CF4 = {
 						CreatedOnToolsVersion = 16.3;
 					};
@@ -334,39 +181,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				21803E852DCCDB2A00522CF4 /* contextmenu */,
-				21803E932DCCDB2B00522CF4 /* contextmenuTests */,
-				21803E9D2DCCDB2B00522CF4 /* contextmenuUITests */,
 				21803EB42DCCDBFB00522CF4 /* TokenFile */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		21803E842DCCDB2A00522CF4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				21F1755F2DD483C100B03A75 /* README.md in Resources */,
-				21803EC52DCCE8CE00522CF4 /* Media.xcassets in Resources */,
-				21FD903D2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21803E922DCCDB2B00522CF4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21803E9C2DCCDB2B00522CF4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		21803EB32DCCDBFB00522CF4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -380,27 +200,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		21803E822DCCDB2A00522CF4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21803E902DCCDB2B00522CF4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21803E9A2DCCDB2B00522CF4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		21803EB12DCCDBFB00522CF4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -411,21 +210,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		21803E962DCCDB2B00522CF4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 21803E852DCCDB2A00522CF4 /* contextmenu */;
-			targetProxy = 21803E952DCCDB2B00522CF4 /* PBXContainerItemProxy */;
-		};
-		21803EA02DCCDB2B00522CF4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 21803E852DCCDB2A00522CF4 /* contextmenu */;
-			targetProxy = 21803E9F2DCCDB2B00522CF4 /* PBXContainerItemProxy */;
-		};
-		21803EBC2DCCDBFB00522CF4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 21803EB42DCCDBFB00522CF4 /* TokenFile */;
-			targetProxy = 21803EBB2DCCDBFB00522CF4 /* PBXContainerItemProxy */;
-		};
 		21FD90392DD5BD8D00C9426B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 21FD90382DD5BD8D00C9426B /* GRPCProtobufGenerator */;
@@ -555,131 +339,6 @@
 			};
 			name = Release;
 		};
-		21803EA92DCCDB2B00522CF4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = contextmenu/contextmenu.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenu;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		21803EAA2DCCDB2B00522CF4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = contextmenu/contextmenu.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenu;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		21803EAC2DCCDB2B00522CF4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenuTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/contextmenu.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/contextmenu";
-			};
-			name = Debug;
-		};
-		21803EAD2DCCDB2B00522CF4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenuTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/contextmenu.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/contextmenu";
-			};
-			name = Release;
-		};
-		21803EAF2DCCDB2B00522CF4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenuUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = contextmenu;
-			};
-			name = Debug;
-		};
-		21803EB02DCCDB2B00522CF4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenuUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = contextmenu;
-			};
-			name = Release;
-		};
 		21803EC02DCCDBFB00522CF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -742,33 +401,6 @@
 			buildConfigurations = (
 				21803EA62DCCDB2B00522CF4 /* Debug */,
 				21803EA72DCCDB2B00522CF4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		21803EA82DCCDB2B00522CF4 /* Build configuration list for PBXNativeTarget "contextmenu" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				21803EA92DCCDB2B00522CF4 /* Debug */,
-				21803EAA2DCCDB2B00522CF4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		21803EAB2DCCDB2B00522CF4 /* Build configuration list for PBXNativeTarget "contextmenuTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				21803EAC2DCCDB2B00522CF4 /* Debug */,
-				21803EAD2DCCDB2B00522CF4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		21803EAE2DCCDB2B00522CF4 /* Build configuration list for PBXNativeTarget "contextmenuUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				21803EAF2DCCDB2B00522CF4 /* Debug */,
-				21803EB02DCCDB2B00522CF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -859,21 +491,6 @@
 			productName = GRPCCore;
 		};
 		21F1756D2DD485C800B03A75 /* GRPCInProcessTransport */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 21F175612DD4857E00B03A75 /* XCRemoteSwiftPackageReference "grpc-swift" */;
-			productName = GRPCInProcessTransport;
-		};
-		21F175A42DD4A02500B03A75 /* GRPCCodeGen */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 21F175612DD4857E00B03A75 /* XCRemoteSwiftPackageReference "grpc-swift" */;
-			productName = GRPCCodeGen;
-		};
-		21F175A62DD4A02500B03A75 /* GRPCCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 21F175612DD4857E00B03A75 /* XCRemoteSwiftPackageReference "grpc-swift" */;
-			productName = GRPCCore;
-		};
-		21F175A82DD4A02500B03A75 /* GRPCInProcessTransport */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 21F175612DD4857E00B03A75 /* XCRemoteSwiftPackageReference "grpc-swift" */;
 			productName = GRPCInProcessTransport;
