@@ -1,0 +1,5 @@
+{
+  "protoc": {
+    "executablePath": "/opt/homebrew/bin/protoc"
+  }
+}

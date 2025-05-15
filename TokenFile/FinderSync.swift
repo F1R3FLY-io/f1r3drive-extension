@@ -7,6 +7,10 @@
 
 import Cocoa
 import FinderSync
+import GRPCCore
+import SwiftProtobuf
+import NIO
+import GRPCNIOTransportHTTP2
 
 class FinderSync: FIFinderSync {
     
@@ -72,14 +76,25 @@ class FinderSync: FIFinderSync {
         for url in items {
             if url.pathExtension.lowercased() == "token" {
                 NSLog("  - %@ (is a .token file)", url.path as NSString)
-                
-                // Example: Show an alert
-                DispatchQueue.main.async {
-                    let alert = NSAlert()
-                    alert.messageText = "Change Token File"
-                    alert.informativeText = "Change action triggered for: \(url.lastPathComponent)"
-                    alert.addButton(withTitle: "OK")
-                    alert.runModal()
+                Task {
+                    do {
+                        // Create a gRPC client connection to localhost:54000 using grpc-swift v2.2.0 API
+                        try await withGRPCClient(
+                            transport: .http2NIOPosix(
+                                target: .dns(host: "localhost", port: 54000),
+                                transportSecurity: .plaintext
+                            )
+                        ) { client in
+                            let grpcClient = Generic_ContextManuService.Client(wrapping: client)
+                            var request = Generic_ActionRequest()
+                            request.path = url.path
+                            request.action = .change
+                            _ = try await grpcClient.submitAction(request)
+                            NSLog("gRPC: Successfully sent Change action for %@", url.path as NSString)
+                        }
+                    } catch {
+                        NSLog("gRPC: Failed to send Change action for %@: %@", url.path as NSString, String(describing: error))
+                    }
                 }
             } else {
                 NSLog("  - %@ (not a .token file, skipped)", url.path as NSString)
