@@ -18,23 +18,56 @@ class FinderSync: FIFinderSync {
         super.init()
         NSLog("FinderSync() launched from %@ :: %@", Bundle.main.bundleIdentifier ?? "Unknown", Bundle.main.bundlePath)
         
-        // Monitor all directories.
-        // Using "/" might be too broad and could have performance implications
-        // or require special permissions. For a more targeted approach,
-        // consider observing specific user directories like ~/Downloads, ~/Documents, etc.
-        // or allowing the user to specify directories.
-        // For this example, we'll try to observe all accessible locations.
-        FIFinderSyncController.default().directoryURLs = Set([URL(fileURLWithPath: "/")])
+        // Get all mounted volumes
+        let mountedVolumes = FileManager.default.mountedVolumeURLs(includingResourceValuesForKeys: [.volumeIsRemovableKey, .volumeIsEjectableKey], options: [])
+        NSLog("FinderSync: All mounted volumes: %@", (mountedVolumes ?? []).map { $0.path } as CVarArg)
         
-        // If issues persist with "/", try more specific common locations:
-        // let userDirs = [
-        //     FileManager.default.homeDirectoryForCurrentUser,
-        //     URL(fileURLWithPath: "/Users/Shared", isDirectory: true)
-        // ]
-        // FIFinderSyncController.default().directoryURLs = Set(userDirs)
-
-        NSLog("FinderSync observing directories: %@", FIFinderSyncController.default().directoryURLs as CVarArg)
-
+        // Log file system type for each mount
+        mountedVolumes?.forEach { url in
+            if let resourceValues = try? url.resourceValues(forKeys: [.volumeLocalizedFormatDescriptionKey]),
+               let fsType = resourceValues.volumeLocalizedFormatDescription {
+                NSLog("FinderSync: Volume %@ has format description: %@", url.path as NSString, fsType as NSString)
+            } else {
+                NSLog("FinderSync: Volume %@ has unknown format description", url.path as NSString)
+            }
+        }
+        
+        // Filter for MacFUSE mounts by format description
+        let macFuseMounts = mountedVolumes?.filter { url in
+            if let resourceValues = try? url.resourceValues(forKeys: [.volumeLocalizedFormatDescriptionKey]),
+               let fsType = resourceValues.volumeLocalizedFormatDescription?.lowercased() {
+                return fsType.contains("fuse")
+            }
+            return false
+        } ?? []
+        
+        if macFuseMounts.isEmpty {
+            NSLog("FinderSync: No MacFUSE mounts found")
+        } else {
+            NSLog("FinderSync: Found MacFUSE mounts: %@", macFuseMounts.map { $0.path } as CVarArg)
+            FIFinderSyncController.default().directoryURLs = Set(macFuseMounts)
+        }
+        
+        // Set up a timer to periodically check for new MacFUSE mounts
+        Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { [weak self] _ in
+            self?.updateMacFuseMounts()
+        }
+    }
+    
+    private func updateMacFuseMounts() {
+        let mountedVolumes = FileManager.default.mountedVolumeURLs(includingResourceValuesForKeys: [.volumeIsRemovableKey, .volumeIsEjectableKey], options: [])
+        
+        let macFuseMounts = mountedVolumes?.filter { url in
+            let resourceValues = try? url.resourceValues(forKeys: [.volumeIsRemovableKey, .volumeIsEjectableKey])
+            let isRemovable = resourceValues?.volumeIsRemovable ?? false
+            let isEjectable = resourceValues?.volumeIsEjectable ?? false
+            return isRemovable && isEjectable
+        } ?? []
+        
+        if !macFuseMounts.isEmpty {
+            NSLog("FinderSync: Updating MacFUSE mounts: %@", macFuseMounts.map { $0.path } as CVarArg)
+            FIFinderSyncController.default().directoryURLs = Set(macFuseMounts)
+        }
     }
     
     // MARK: - Menu and toolbar item support
@@ -54,7 +87,7 @@ class FinderSync: FIFinderSync {
         }
         
         if hasTokenFile {
-            let menuItem = NSMenuItem(title: "Change", action: #selector(changeAction(_:)), keyEquivalent: "")
+            let menuItem = NSMenuItem(title: "Exchange", action: #selector(handleExchangeAction(_:)), keyEquivalent: "")
             let iconImage = NSImage(named: "f1r3fly_icon")
             if iconImage == nil {
                 NSLog("FinderSync: Failed to load f1r3fly_icon.")
@@ -66,7 +99,7 @@ class FinderSync: FIFinderSync {
         return menu
     }
     
-    @objc func changeAction(_ sender: AnyObject?) {
+    @objc func handleExchangeAction(_ sender: AnyObject?) {
         guard let items = FIFinderSyncController.default().selectedItemURLs() else {
             NSLog("changeAction triggered but no selected items found.")
             return
@@ -87,8 +120,8 @@ class FinderSync: FIFinderSync {
                         ) { client in
                             let grpcClient = Generic_ContextManuService.Client(wrapping: client)
                             var request = Generic_ActionRequest()
-                            request.path = url.path
-                            request.action = .change
+                            request.path = [url.path]
+                            request.action = .exchange
                             _ = try await grpcClient.submitAction(request)
                             NSLog("gRPC: Successfully sent Change action for %@", url.path as NSString)
                         }

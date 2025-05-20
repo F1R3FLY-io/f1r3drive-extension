@@ -1,20 +1,31 @@
-// Proto/ContextManuService.proto
+// ContextManuService.proto
 syntax = "proto3";
 
 package generic;
 
 enum ActionType {
-  CHANGE = 0;
-  SPLIT = 1;
+  EXCHANGE = 0;
+  COMBINE = 1;
 }
 
 message ActionRequest {
-  string path = 1;
-  ActionType action = 2;
+  ActionType action = 1;
+  repeated string path = 2;
+}
+
+message ErrorResponse {
+  string error_message = 1;
+}
+
+message ActionResponse {
+  oneof result {
+    EmptyResponse success = 1;
+    ErrorResponse error = 2;
+  }
 }
 
 message EmptyResponse {}
 
 service ContextManuService {
-  rpc SubmitAction(ActionRequest) returns (EmptyResponse);
+  rpc SubmitAction(ActionRequest) returns (ActionResponse);
 }
