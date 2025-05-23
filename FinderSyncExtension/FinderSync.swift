@@ -1,6 +1,6 @@
 //
 //  FinderSync.swift
-//  TokenFile
+//  FinderSyncExtension
 //
 //  Created by Andrii Stefaniv on 08.05.2025.
 //
@@ -111,15 +111,14 @@ class FinderSync: FIFinderSync {
                 NSLog("  - %@ (is a .token file)", url.path as NSString)
                 Task {
                     do {
-                        // Create a gRPC client connection to localhost:54000 using grpc-swift v2.2.0 API
                         try await withGRPCClient(
                             transport: .http2NIOPosix(
                                 target: .dns(host: "localhost", port: 54000),
                                 transportSecurity: .plaintext
                             )
                         ) { client in
-                            let grpcClient = Generic_ContextManuService.Client(wrapping: client)
-                            var request = Generic_ActionRequest()
+                            let grpcClient = Generic_FinderSyncExtensionService.Client(wrapping: client)
+                            var request = Generic_MenuActionRequest()
                             request.path = [url.path]
                             request.action = .exchange
                             _ = try await grpcClient.submitAction(request)
@@ -131,6 +130,57 @@ class FinderSync: FIFinderSync {
                 }
             } else {
                 NSLog("  - %@ (not a .token file, skipped)", url.path as NSString)
+            }
+        }
+    }
+    
+    // MARK: - Directory observation for "locked" folder
+    override func beginObservingDirectory(at url: URL) {
+        if url.lastPathComponent.starts(with: "REV_") {
+            NSLog("FinderSync: 'REV' folder opened at %@", url.path as NSString)
+            DispatchQueue.main.async {
+                NSApp.activate(ignoringOtherApps: true)
+                let alert = NSAlert()
+                alert.messageText = "Enter the private key of REV address"
+                alert.informativeText = "Please enter the private key to access the address: \(url.path)"
+                alert.alertStyle = .warning
+
+                let passwordField = NSSecureTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
+                passwordField.placeholderString = "Private key"
+                alert.accessoryView = passwordField
+                alert.addButton(withTitle: "Unlock")
+                alert.addButton(withTitle: "Cancel")
+
+                // Set password field as initial first responder if possible
+                alert.window.initialFirstResponder = passwordField
+
+                let response = alert.runModal()
+                if response == .alertFirstButtonReturn {
+                    let privateKey = passwordField.stringValue
+                    NSLog("FinderSync: Private key entered for 'locked' folder: (hidden for security)")
+                    Task {
+                        do {
+                            try await withGRPCClient(
+                                transport: .http2NIOPosix(
+                                    target: .dns(host: "localhost", port: 54000),
+                                    transportSecurity: .plaintext
+                                )
+                            ) { client in
+                                let grpcClient = Generic_FinderSyncExtensionService.Client(wrapping: client)
+                                var request = Generic_UnlockWalletFolderRequest()
+                                let revAddress = url.lastPathComponent.replacingOccurrences(of: "REV_", with: "")
+                                request.revAddress = revAddress
+                                request.privateKey = privateKey
+                                _ = try await grpcClient.unlockWalletFolder(request)
+                                NSLog("gRPC: Successfully sent private key for %@", url.path as NSString)
+                            }
+                        } catch {
+                            NSLog("gRPC: Failed to send private key for %@: %@", url.path as NSString, String(describing: error))
+                        }
+                    }
+                } else {
+                    NSLog("FinderSync: Private key entry cancelled for 'locked' folder")
+                }
             }
         }
     }

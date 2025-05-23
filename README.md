@@ -17,10 +17,10 @@ A macOS Finder Sync extension and SwiftUI app for customizing the Finder context
   - [`contextmenuApp.swift`](contextmenu/contextmenuApp.swift): App entry point
   - [`contextmenu.entitlements`](contextmenu/contextmenu.entitlements): App entitlements
   - [`Assets.xcassets/`](contextmenu/Assets.xcassets): Asset catalog for images/resources
-- [`TokenFile/`](TokenFile/) — Finder Sync extension
-  - [`FinderSync.swift`](TokenFile/FinderSync.swift): Finder Sync extension logic (context menu customization)
-  - [`Info.plist`](TokenFile/Info.plist): Extension configuration (registers `.token` file type)
-  - [`TokenFile.entitlements`](TokenFile/TokenFile.entitlements): Extension entitlements
+- [`FinderSyncExtension/`](FinderSyncExtension/) — Finder Sync extension
+  - [`FinderSync.swift`](FinderSyncExtension/FinderSync.swift): Finder Sync extension logic (context menu customization)
+  - [`Info.plist`](FinderSyncExtension/Info.plist): Extension configuration (registers `.token` file type)
+  - [`FinderSyncExtension.entitlements`](FinderSyncExtension/FinderSyncExtension.entitlements): Extension entitlements
 - [`contextmenuTests/`](contextmenuTests/) — Unit tests for the main app
 - [`contextmenuUITests/`](contextmenuUITests/) — UI tests for the main app
 - [`Media.xcassets/`](Media.xcassets/) — Additional image assets (e.g., `f1r3fly_icon`)
@@ -48,10 +48,10 @@ A macOS Finder Sync extension and SwiftUI app for customizing the Finder context
    - Open [`contextmenu.xcodeproj`](contextmenu.xcodeproj/) in Xcode.
 3. **Build the app and extension:**
    - Select the `contextmenu` scheme and build (⌘B).
-   - Select the `TokenFile` extension scheme and build if needed.
+   - Select the `FinderSyncExtension` extension scheme and build if needed.
 4. **Enable the Finder Sync extension:**
    - Go to **System Settings > Privacy & Security > Extensions > Finder Extensions**.
-   - Enable the `TokenFile` extension.
+   - Enable the `FinderSyncExtension` extension.
 5. **Run the app:**
    - Run the `contextmenu` app from Xcode (⌘R) for UI testing or development.
    - The Finder Sync extension will be available in Finder context menus for `.token` files.

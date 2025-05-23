@@ -12,10 +12,10 @@ This project is organized as follows:
   - [contextmenuApp.swift](mdc:contextmenu/contextmenuApp.swift): App entry point.
   - [contextmenu.entitlements](mdc:contextmenu/contextmenu.entitlements): App entitlements.
   - [Assets.xcassets/](mdc:contextmenu/Assets.xcassets): Asset catalog for images and resources.
-- The [TokenFile/](mdc:TokenFile) directory contains:
-  - [FinderSync.swift](mdc:TokenFile/FinderSync.swift): Finder Sync extension logic.
-  - [Info.plist](mdc:TokenFile/Info.plist): Extension configuration.
-  - [TokenFile.entitlements](mdc:TokenFile/TokenFile.entitlements): Extension entitlements.
+- The [FinderSyncExtension/](mdc:FinderSyncExtension) directory contains:
+  - [FinderSync.swift](mdc:FinderSyncExtension/FinderSync.swift): Finder Sync extension logic.
+  - [Info.plist](mdc:FinderSyncExtension/Info.plist): Extension configuration.
+  - [FinderSyncExtension.entitlements](mdc:FinderSyncExtension/FinderSyncExtension.entitlements): Extension entitlements.
 - The [contextmenuTests/](mdc:contextmenuTests) directory contains unit tests for the main app.
 - The [Media.xcassets/](mdc:Media.xcassets) directory contains additional image assets.
 
