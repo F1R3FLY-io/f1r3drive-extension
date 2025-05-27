@@ -11,6 +11,7 @@ import GRPCCore
 import SwiftProtobuf
 import NIO
 import GRPCNIOTransportHTTP2
+import Foundation
 
 class FinderSync: FIFinderSync {
     
@@ -138,50 +139,17 @@ class FinderSync: FIFinderSync {
     override func beginObservingDirectory(at url: URL) {
         if url.lastPathComponent.starts(with: "REV_") {
             NSLog("FinderSync: 'REV' folder opened at %@", url.path as NSString)
-            DispatchQueue.main.async {
-                NSApp.activate(ignoringOtherApps: true)
-                let alert = NSAlert()
-                alert.messageText = "Enter the private key of REV address"
-                alert.informativeText = "Please enter the private key to access the address: \(url.path)"
-                alert.alertStyle = .warning
-
-                let passwordField = NSSecureTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
-                passwordField.placeholderString = "Private key"
-                alert.accessoryView = passwordField
-                alert.addButton(withTitle: "Unlock")
-                alert.addButton(withTitle: "Cancel")
-
-                // Set password field as initial first responder if possible
-                alert.window.initialFirstResponder = passwordField
-
-                let response = alert.runModal()
-                if response == .alertFirstButtonReturn {
-                    let privateKey = passwordField.stringValue
-                    NSLog("FinderSync: Private key entered for 'locked' folder: (hidden for security)")
-                    Task {
-                        do {
-                            try await withGRPCClient(
-                                transport: .http2NIOPosix(
-                                    target: .dns(host: "localhost", port: 54000),
-                                    transportSecurity: .plaintext
-                                )
-                            ) { client in
-                                let grpcClient = Generic_FinderSyncExtensionService.Client(wrapping: client)
-                                var request = Generic_UnlockWalletFolderRequest()
-                                let revAddress = url.lastPathComponent.replacingOccurrences(of: "REV_", with: "")
-                                request.revAddress = revAddress
-                                request.privateKey = privateKey
-                                _ = try await grpcClient.unlockWalletFolder(request)
-                                NSLog("gRPC: Successfully sent private key for %@", url.path as NSString)
-                            }
-                        } catch {
-                            NSLog("gRPC: Failed to send private key for %@: %@", url.path as NSString, String(describing: error))
-                        }
-                    }
-                } else {
-                    NSLog("FinderSync: Private key entry cancelled for 'locked' folder")
-                }
-            }
+            let revAddress = url.lastPathComponent.replacingOccurrences(of: "REV_", with: "")
+            launchPrivateKeyHelper(revAddress: revAddress)
+        }
+    }
+    
+    func launchPrivateKeyHelper(revAddress: String) {
+        // Use custom URL scheme to pass revAddress
+        if let url = URL(string: "f1r3drive://unlock?revAddress=\(revAddress)") {
+            NSWorkspace.shared.open(url)
+        } else {
+            NSLog("Failed to construct custom URL for revAddress: %@", revAddress as NSString)
         }
     }
     
