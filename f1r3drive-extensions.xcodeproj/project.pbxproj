@@ -72,7 +72,7 @@
 		21803E9E2DCCDB2B00522CF4 /* contextmenuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contextmenuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21803EB52DCCDBFB00522CF4 /* FinderSyncExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FinderSyncExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		21803EC32DCCE8CE00522CF4 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		2198B3BF2DE5DA2D00964B06 /* RevFolderUnlocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RevFolderUnlocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2198B3BF2DE5DA2D00964B06 /* RevFolderUnlockerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RevFolderUnlockerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BA85292DD66596000C2641 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21BA852A2DD66596000C2641 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		21BA852B2DD66596000C2641 /* contextmenu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = contextmenu.entitlements; sourceTree = "<group>"; };
@@ -100,9 +100,9 @@
 			path = FinderSyncExtension;
 			sourceTree = "<group>";
 		};
-		2198B3C02DE5DA2D00964B06 /* RevFolderUnlocker */ = {
+		2198B3C02DE5DA2D00964B06 /* RevFolderUnlockerApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = RevFolderUnlocker;
+			path = RevFolderUnlockerApp;
 			sourceTree = "<group>";
 		};
 		21F1756F2DD4864B00B03A75 /* Protos */ = {
@@ -173,7 +173,7 @@
 				21F1755E2DD483C100B03A75 /* README.md */,
 				21803EC32DCCE8CE00522CF4 /* Media.xcassets */,
 				21803EB62DCCDBFB00522CF4 /* FinderSyncExtension */,
-				2198B3C02DE5DA2D00964B06 /* RevFolderUnlocker */,
+				2198B3C02DE5DA2D00964B06 /* RevFolderUnlockerApp */,
 				213A4FD82DDF52EB00E0BC96 /* Frameworks */,
 				21803E872DCCDB2A00522CF4 /* Products */,
 			);
@@ -186,7 +186,7 @@
 				21803E942DCCDB2B00522CF4 /* contextmenuTests.xctest */,
 				21803E9E2DCCDB2B00522CF4 /* contextmenuUITests.xctest */,
 				21803EB52DCCDBFB00522CF4 /* FinderSyncExtension.appex */,
-				2198B3BF2DE5DA2D00964B06 /* RevFolderUnlocker.app */,
+				2198B3BF2DE5DA2D00964B06 /* RevFolderUnlockerApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -299,9 +299,9 @@
 			productReference = 21803EB52DCCDBFB00522CF4 /* FinderSyncExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		2198B3BE2DE5DA2D00964B06 /* RevFolderUnlocker */ = {
+		2198B3BE2DE5DA2D00964B06 /* RevFolderUnlockerApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2198B3C82DE5DA2E00964B06 /* Build configuration list for PBXNativeTarget "RevFolderUnlocker" */;
+			buildConfigurationList = 2198B3C82DE5DA2E00964B06 /* Build configuration list for PBXNativeTarget "RevFolderUnlockerApp" */;
 			buildPhases = (
 				2198B3BB2DE5DA2D00964B06 /* Sources */,
 				2198B3BC2DE5DA2D00964B06 /* Frameworks */,
@@ -312,13 +312,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				2198B3C02DE5DA2D00964B06 /* RevFolderUnlocker */,
+				2198B3C02DE5DA2D00964B06 /* RevFolderUnlockerApp */,
 			);
-			name = RevFolderUnlocker;
+			name = RevFolderUnlockerApp;
 			packageProductDependencies = (
 			);
-			productName = RevFolderUnlocker;
-			productReference = 2198B3BF2DE5DA2D00964B06 /* RevFolderUnlocker.app */;
+			productName = RevFolderUnlockerApp;
+			productReference = 2198B3BF2DE5DA2D00964B06 /* RevFolderUnlockerApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -350,7 +350,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 21803E812DCCDB2A00522CF4 /* Build configuration list for PBXProject "contextmenu" */;
+			buildConfigurationList = 21803E812DCCDB2A00522CF4 /* Build configuration list for PBXProject "f1r3drive-extensions" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -374,7 +374,7 @@
 				21803E932DCCDB2B00522CF4 /* contextmenuTests */,
 				21803E9D2DCCDB2B00522CF4 /* contextmenuUITests */,
 				21803EB42DCCDBFB00522CF4 /* FinderSyncExtension */,
-				2198B3BE2DE5DA2D00964B06 /* RevFolderUnlocker */,
+				2198B3BE2DE5DA2D00964B06 /* RevFolderUnlockerApp */,
 			);
 		};
 /* End PBXProject section */
@@ -796,7 +796,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = RevFolderUnlocker/RevFolderUnlocker.entitlements;
+				CODE_SIGN_ENTITLEMENTS = RevFolderUnlockerApp/RevFolderUnlockerApp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -804,14 +805,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = RevFolderUnlocker/Info.plist;
+				INFOPLIST_FILE = RevFolderUnlockerApp/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.RevFolderUnlocker;
+				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.RevFolderUnlockerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -824,7 +825,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = RevFolderUnlocker/RevFolderUnlocker.entitlements;
+				CODE_SIGN_ENTITLEMENTS = RevFolderUnlockerApp/RevFolderUnlockerApp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -832,14 +834,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = RevFolderUnlocker/Info.plist;
+				INFOPLIST_FILE = RevFolderUnlockerApp/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.RevFolderUnlocker;
+				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.RevFolderUnlockerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -850,7 +852,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		21803E812DCCDB2A00522CF4 /* Build configuration list for PBXProject "contextmenu" */ = {
+		21803E812DCCDB2A00522CF4 /* Build configuration list for PBXProject "f1r3drive-extensions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21803EA62DCCDB2B00522CF4 /* Debug */,
@@ -895,7 +897,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2198B3C82DE5DA2E00964B06 /* Build configuration list for PBXNativeTarget "RevFolderUnlocker" */ = {
+		2198B3C82DE5DA2E00964B06 /* Build configuration list for PBXNativeTarget "RevFolderUnlockerApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2198B3C92DE5DA2E00964B06 /* Debug */,

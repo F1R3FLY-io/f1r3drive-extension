@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  RevFolderUnlocker
+//  RevFolderUnlockerApp
 //
 //  Created by Andrii Stefaniv on 27.05.2025.
 //
@@ -12,28 +12,74 @@ struct ContentView: View {
     var revAddress: String
 
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Enter Private Key for \(revAddress)")
-                .font(.headline)
+        VStack(spacing: 16) {
+            Image("f1r3fly_icon")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 50, height: 50)
+                .clipShape(Circle())
+            
+            VStack(spacing: 8) {
+                Text("Folder Unlock Required")
+                    .font(.headline)
+                
+                Text("Enter your private key to unlock the folder")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+                
+                HStack {
+                    Image(systemName: "key.fill")
+                        .foregroundColor(.blue)
+                        .font(.caption)
+                    Text("Rev Address")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                
+                Text(revAddress)
+                    .font(.system(.body, design: .monospaced))
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(8)
+                    .onTapGesture {
+                        let pasteboard = NSPasteboard.general
+                        pasteboard.clearContents()
+                        pasteboard.setString(revAddress, forType: .string)
+                    }
+                    .help("Tap to copy address")
+            }
+            
+            VStack(alignment: .leading, spacing: 6) {
+                HStack {
+                    Image(systemName: "lock.fill")
+                        .foregroundColor(.orange)
+                        .font(.caption)
+                    Text("Private Key")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                
+                SecureField("Enter your private key...", text: $privateKey)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
 
-            TextField("Private Key", text: $privateKey)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-
-            HStack {
+            HStack(spacing: 12) {
                 Button("Cancel") {
                     NSApplication.shared.keyWindow?.close()
                 }
                 .keyboardShortcut(.cancelAction)
 
-                Button("Unlock") {
+                Button("Unlock Folder") {
                     print("Unlocking with key: \(privateKey)")
                 }
                 .keyboardShortcut(.defaultAction)
+                .buttonStyle(.borderedProminent)
             }
         }
-        .padding()
-        .frame(width: 300, height: 200)
+        .padding(24)
+        .frame(width: 350, height: 280)
     }
 }
 

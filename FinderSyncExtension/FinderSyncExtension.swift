@@ -13,7 +13,7 @@ import NIO
 import GRPCNIOTransportHTTP2
 import Foundation
 
-class FinderSync: FIFinderSync {
+class FinderSyncExtension: FIFinderSync {
     
     override init() {
         super.init()
@@ -137,9 +137,9 @@ class FinderSync: FIFinderSync {
     
     // MARK: - Directory observation for "locked" folder
     override func beginObservingDirectory(at url: URL) {
-        if url.lastPathComponent.starts(with: "REV_") {
+        if url.lastPathComponent.starts(with: "LOCKED-REMOTE-REV-") {
             NSLog("FinderSync: 'REV' folder opened at %@", url.path as NSString)
-            let revAddress = url.lastPathComponent.replacingOccurrences(of: "REV_", with: "")
+            let revAddress = url.lastPathComponent.replacingOccurrences(of: "LOCKED-REMOTE-REV-", with: "")
             launchPrivateKeyHelper(revAddress: revAddress)
         }
     }
