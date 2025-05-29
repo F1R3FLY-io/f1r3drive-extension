@@ -19,7 +19,7 @@
                BlueprintIdentifier = "21803EB42DCCDBFB00522CF4"
                BuildableName = "FinderSyncExtension.appex"
                BlueprintName = "FinderSyncExtension"
-               ReferencedContainer = "container:f1r3drive-extensions.xcodeproj">
+               ReferencedContainer = "container:F1r3driveExtensions.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -33,7 +33,7 @@
                BlueprintIdentifier = "21803E852DCCDB2A00522CF4"
                BuildableName = "contextmenu.app"
                BlueprintName = "contextmenu"
-               ReferencedContainer = "container:f1r3drive-extensions.xcodeproj">
+               ReferencedContainer = "container:F1r3driveExtensions.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -68,7 +68,7 @@
             BlueprintIdentifier = "21803E852DCCDB2A00522CF4"
             BuildableName = "contextmenu.app"
             BlueprintName = "contextmenu"
-            ReferencedContainer = "container:f1r3drive-extensions.xcodeproj">
+            ReferencedContainer = "container:F1r3driveExtensions.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </LaunchAction>
@@ -87,7 +87,7 @@
             BlueprintIdentifier = "21803E852DCCDB2A00522CF4"
             BuildableName = "contextmenu.app"
             BlueprintName = "contextmenu"
-            ReferencedContainer = "container:f1r3drive-extensions.xcodeproj">
+            ReferencedContainer = "container:F1r3driveExtensions.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

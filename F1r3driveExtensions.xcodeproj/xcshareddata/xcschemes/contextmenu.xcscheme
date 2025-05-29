@@ -18,7 +18,7 @@
                BlueprintIdentifier = "21803E852DCCDB2A00522CF4"
                BuildableName = "contextmenu.app"
                BlueprintName = "contextmenu"
-               ReferencedContainer = "container:f1r3drive-extensions.xcodeproj">
+               ReferencedContainer = "container:F1r3driveExtensions.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -38,7 +38,7 @@
                BlueprintIdentifier = "21803E932DCCDB2B00522CF4"
                BuildableName = "contextmenuTests.xctest"
                BlueprintName = "contextmenuTests"
-               ReferencedContainer = "container:f1r3drive-extensions.xcodeproj">
+               ReferencedContainer = "container:F1r3driveExtensions.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -49,7 +49,7 @@
                BlueprintIdentifier = "21803E9D2DCCDB2B00522CF4"
                BuildableName = "contextmenuUITests.xctest"
                BlueprintName = "contextmenuUITests"
-               ReferencedContainer = "container:f1r3drive-extensions.xcodeproj">
+               ReferencedContainer = "container:F1r3driveExtensions.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,7 +71,7 @@
             BlueprintIdentifier = "21803E852DCCDB2A00522CF4"
             BuildableName = "contextmenu.app"
             BlueprintName = "contextmenu"
-            ReferencedContainer = "container:f1r3drive-extensions.xcodeproj">
+            ReferencedContainer = "container:F1r3driveExtensions.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -88,7 +88,7 @@
             BlueprintIdentifier = "21803E852DCCDB2A00522CF4"
             BuildableName = "contextmenu.app"
             BlueprintName = "contextmenu"
-            ReferencedContainer = "container:f1r3drive-extensions.xcodeproj">
+            ReferencedContainer = "container:F1r3driveExtensions.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
