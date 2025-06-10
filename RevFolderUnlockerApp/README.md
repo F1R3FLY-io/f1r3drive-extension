@@ -20,7 +20,7 @@ A macOS application for unlocking Rev folders with private keys. This app handle
 After building the project, copy the application to your Applications folder:
 
 ```bash
-cp -r ~/Library/Developer/Xcode/DerivedData/f1r3drive-extensions-*/Build/Products/Debug/RevFolderUnlockerApp.app /Applications/
+cp -r ~/Library/Developer/Xcode/DerivedData/F1r3driveExtensions-*/Build/Products/Debug/RevFolderUnlockerApp.app /Applications/
 ```
 
 ## Testing
@@ -28,7 +28,7 @@ cp -r ~/Library/Developer/Xcode/DerivedData/f1r3drive-extensions-*/Build/Product
 To test the application with a sample Rev address, use the following command:
 
 ```bash
-open "f1r3drive://unlock?revAddress=1111LAd2PWaHsw84gxarNx99YVK2aZhCThhrPsWTV7cs1BPcvHftP"
+open "f1r3drive://unlock?revAddress=111129p33f7vaRrpLqK8Nr35Y2aacAjrR5pd6PCzqcdrMuPHzymczH"
 ```
 
 This will launch the RevFolderUnlockerApp app with the specified Rev address pre-populated.

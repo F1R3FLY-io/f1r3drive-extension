@@ -6,11 +6,19 @@
 //
 
 import SwiftUI
+import GRPCCore
+import SwiftProtobuf
+import NIO
+import GRPCNIOTransportHTTP2
 
 struct ContentView: View {
     @State private var privateKey: String = ""
     @State private var isHovering: Bool = false
     @State private var showCopiedFeedback: Bool = false
+    @State private var isUnlocking: Bool = false
+    @State private var showError: Bool = false
+    @State private var errorMessage: String = ""
+    @State private var showSuccess: Bool = false
     var revAddress: String
 
     var body: some View {
@@ -108,6 +116,45 @@ struct ContentView: View {
                                 .stroke(privateKey.isEmpty ? Color.gray.opacity(0.3) : Color.blue.opacity(0.5), lineWidth: 1)
                         )
                         .focused($isFocused)
+                        .disabled(isUnlocking)
+                }
+                
+                // Error Message
+                if showError {
+                    HStack {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .foregroundColor(.red)
+                            .font(.caption)
+                        Text(errorMessage)
+                            .font(.caption)
+                            .foregroundColor(.red)
+                    }
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color.red.opacity(0.1))
+                            .stroke(Color.red.opacity(0.3), lineWidth: 1)
+                    )
+                }
+                
+                // Success Message
+                if showSuccess {
+                    HStack {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.green)
+                            .font(.caption)
+                        Text("Folder unlocked successfully!")
+                            .font(.caption)
+                            .foregroundColor(.green)
+                    }
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color.green.opacity(0.1))
+                            .stroke(Color.green.opacity(0.3), lineWidth: 1)
+                    )
                 }
             }
             .padding(.horizontal, 24)
@@ -121,19 +168,26 @@ struct ContentView: View {
                 }
                 .buttonStyle(SecondaryButtonStyle())
                 .keyboardShortcut(.cancelAction)
+                .disabled(isUnlocking)
                 
-                Button("Unlock Folder") {
-                    print("Unlocking with key: \(privateKey)")
-                    // Add actual unlock logic here
+                Button(action: unlockFolder) {
+                    HStack {
+                        if isUnlocking {
+                            ProgressView()
+                                .scaleEffect(0.8)
+                                .progressViewStyle(CircularProgressViewStyle())
+                        }
+                        Text(isUnlocking ? "Unlocking..." : "Unlock Folder")
+                    }
                 }
                 .buttonStyle(PrimaryButtonStyle())
                 .keyboardShortcut(.defaultAction)
-                .disabled(privateKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                .disabled(privateKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || isUnlocking)
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 24)
         }
-        .frame(width: 400, height: 400)
+        .frame(width: 400, height: 450)
         .background(Color(.windowBackgroundColor))
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
@@ -148,6 +202,56 @@ struct ContentView: View {
         showCopiedFeedback = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             showCopiedFeedback = false
+        }
+    }
+    
+    private func unlockFolder() {
+        // Reset states
+        showError = false
+        showSuccess = false
+        isUnlocking = true
+        
+        Task {
+            do {
+                try await withGRPCClient(
+                    transport: .http2NIOPosix(
+                        target: .dns(host: "localhost", port: 54000),
+                        transportSecurity: .plaintext
+                    )
+                ) { client in
+                    let grpcClient = Generic_FinderSyncExtensionService.Client(wrapping: client)
+                    var request = Generic_UnlockWalletDirectoryRequest()
+                    request.revAddress = revAddress
+                    request.privateKey = privateKey.trimmingCharacters(in: .whitespacesAndNewlines)
+                    
+                    let response = try await grpcClient.unlockWalletDirectory(request)
+                    
+                    await MainActor.run {
+                        isUnlocking = false
+                        
+                        switch response.result {
+                        case .success:
+                            showSuccess = true
+                            // Close the app after a short delay
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                NSApplication.shared.keyWindow?.close()
+                            }
+                        case .error(let errorResponse):
+                            showError = true
+                            errorMessage = errorResponse.errorMessage
+                        case .none:
+                            showError = true
+                            errorMessage = "Unknown error occurred"
+                        }
+                    }
+                }
+            } catch {
+                await MainActor.run {
+                    isUnlocking = false
+                    showError = true
+                    errorMessage = "Failed to connect to service: \(error.localizedDescription)"
+                }
+            }
         }
     }
 }
