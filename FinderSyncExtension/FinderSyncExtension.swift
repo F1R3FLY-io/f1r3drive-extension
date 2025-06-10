@@ -88,7 +88,7 @@ class FinderSyncExtension: FIFinderSync {
         }
         
         if hasTokenFile {
-            let menuItem = NSMenuItem(title: "Exchange", action: #selector(handleExchangeAction(_:)), keyEquivalent: "")
+            let menuItem = NSMenuItem(title: "Change", action: #selector(handleChangeAction(_:)), keyEquivalent: "")
             let iconImage = NSImage(named: "f1r3fly_icon")
             if iconImage == nil {
                 NSLog("FinderSync: Failed to load f1r3fly_icon.")
@@ -100,7 +100,7 @@ class FinderSyncExtension: FIFinderSync {
         return menu
     }
     
-    @objc func handleExchangeAction(_ sender: AnyObject?) {
+    @objc func handleChangeAction(_ sender: AnyObject?) {
         guard let items = FIFinderSyncController.default().selectedItemURLs() else {
             NSLog("changeAction triggered but no selected items found.")
             return
@@ -121,7 +121,7 @@ class FinderSyncExtension: FIFinderSync {
                             let grpcClient = Generic_FinderSyncExtensionService.Client(wrapping: client)
                             var request = Generic_MenuActionRequest()
                             request.path = [url.path]
-                            request.action = .exchange
+                            request.action = .change
                             _ = try await grpcClient.submitAction(request)
                             NSLog("gRPC: Successfully sent Change action for %@", url.path as NSString)
                         }

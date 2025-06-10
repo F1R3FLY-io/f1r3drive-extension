@@ -1,67 +1,172 @@
-# contextmenu
+# F1r3drive Extensions
 
-A macOS Finder Sync extension and SwiftUI app for customizing the Finder context menu, with a focus on supporting custom actions for `.token` files.
+A macOS Finder Sync extension suite for the F1r3drive ecosystem, providing custom context menu actions for `.token` files and folder unlocking capabilities. The project consists of multiple integrated components that work together to enhance Finder functionality for blockchain-related file operations.
 
-## Features
+## Overview
 
-- **Finder Context Menu Customization:**
-  - Adds a custom "Change" action to the Finder context menu for files with the `.token` extension.
-  - (Other actions: **TODO** — planned for future development.)
-- **SwiftUI App:**
-  - Basic SwiftUI app structure (currently a placeholder UI).
+This project provides:
+- **Finder Context Menu Enhancement**: Custom actions for `.token` files via a Finder Sync extension
+- **MacFUSE Integration**: Automatic detection and monitoring of MacFUSE mounts
+- **gRPC Communication**: Service-based architecture for handling menu actions
+- **Folder Unlocking UI**: Dedicated app for unlocking Rev address folders with private keys
+- **URL Scheme Handling**: Custom `f1r3drive://` URL scheme support
 
 ## Project Structure
 
-- [`contextmenu/`](contextmenu/) — Main SwiftUI app
-  - [`ContentView.swift`](contextmenu/ContentView.swift): Main SwiftUI view
+### Core Components
+
+- **[`contextmenu/`](contextmenu/)** — Main SwiftUI app (minimal placeholder UI)
+  - [`ContentView.swift`](contextmenu/ContentView.swift): Basic "Hello, world!" SwiftUI view
   - [`contextmenuApp.swift`](contextmenu/contextmenuApp.swift): App entry point
   - [`contextmenu.entitlements`](contextmenu/contextmenu.entitlements): App entitlements
-  - [`Assets.xcassets/`](contextmenu/Assets.xcassets): Asset catalog for images/resources
-- [`FinderSyncExtension/`](FinderSyncExtension/) — Finder Sync extension
-  - [`FinderSync.swift`](FinderSyncExtension/FinderSync.swift): Finder Sync extension logic (context menu customization)
-  - [`Info.plist`](FinderSyncExtension/Info.plist): Extension configuration (registers `.token` file type)
+
+- **[`FinderSyncExtension/`](FinderSyncExtension/)** — Finder Sync extension with advanced functionality
+  - [`FinderSyncExtension.swift`](FinderSyncExtension/FinderSyncExtension.swift): Core extension logic
+    - MacFUSE mount detection and monitoring
+    - Context menu "Change" action for `.token` files
+    - gRPC client for communicating with backend services
+    - Directory observation for locked Rev folders
+    - Custom URL scheme launching for folder unlocking
+  - [`Info.plist`](FinderSyncExtension/Info.plist): Extension configuration
   - [`FinderSyncExtension.entitlements`](FinderSyncExtension/FinderSyncExtension.entitlements): Extension entitlements
-- [`contextmenuTests/`](contextmenuTests/) — Unit tests for the main app
-- [`contextmenuUITests/`](contextmenuUITests/) — UI tests for the main app
-- [`Media.xcassets/`](Media.xcassets/) — Additional image assets (e.g., `f1r3fly_icon`)
-- [`.cursor/rules/`](.cursor/rules/) — Project-specific rules and structure guides
 
-## How It Works
+- **[`RevFolderUnlockerApp/`](RevFolderUnlockerApp/)** — Dedicated app for folder unlocking
+  - [`ContentView.swift`](RevFolderUnlockerApp/ContentView.swift): Modern SwiftUI interface for private key input
+  - [`RevFolderUnlockerApp.swift`](RevFolderUnlockerApp/RevFolderUnlockerApp.swift): App entry point with URL scheme handling
+  - [`RevFolderUnlockerApp.entitlements`](RevFolderUnlockerApp/RevFolderUnlockerApp.entitlements): App entitlements
+  - [`README.md`](RevFolderUnlockerApp/README.md): Detailed documentation for the unlocking app
 
-- The Finder Sync extension observes all directories and adds a "Change" menu item for `.token` files in Finder's context menu.
-- Selecting "Change" triggers a simple alert (for demonstration). Future versions will add more actions and logic.
+- **[`RevFolderUnlocker/`](RevFolderUnlocker/)** — Alternative implementation of folder unlocker
+  - [`ContentView.swift`](RevFolderUnlocker/ContentView.swift): SwiftUI interface for unlocking
+  - [`RevFolderUnlockerApp.swift`](RevFolderUnlocker/RevFolderUnlockerApp.swift): App implementation
+  - [`README.md`](RevFolderUnlocker/README.md): Component documentation
+
+### Protocol Definitions & Configuration
+
+- **[`Protos/`](Protos/)** — gRPC service definitions
+  - [`FinderSyncExntesionService.proto`](Protos/FinderSyncExntesionService.proto): Protocol buffer definitions
+    - `MenuActionType` enum (CHANGE, COMBINE)
+    - `MenuActionRequest`, `UnlockWalletFolderRequest` messages
+    - `FinderSyncExtensionService` with `SubmitAction` and `UnlockWalletFolder` RPCs
+  - [`grpc-swift-config.json`](Protos/grpc-swift-config.json): gRPC Swift configuration
+
+- **Project Files**
+  - [`F1r3driveExtensions.xcodeproj/`](F1r3driveExtensions.xcodeproj/): Main Xcode project
+  - [`grpc-swift-proto-generator-config.json`](grpc-swift-proto-generator-config.json): Proto generation config
+  - [`Media.xcassets/`](Media.xcassets/): Shared image assets (f1r3fly_icon)
+
+### Test Suites
+
+- **[`contextmenuTests/`](contextmenuTests/)** — Unit tests for the main app
+- **[`contextmenuUITests/`](contextmenuUITests/)** — UI tests for the main app
+
+## Key Features
+
+### 1. MacFUSE Mount Detection
+The Finder Sync extension automatically:
+- Detects all mounted MacFUSE volumes
+- Monitors for new mounts every 5 seconds
+- Filters volumes by FUSE format description
+- Updates the monitored directory list dynamically
+
+### 2. Context Menu Integration
+- Adds "Change" action to Finder context menus for `.token` files
+- Displays custom F1r3fly icon in the context menu
+- Sends gRPC requests to `localhost:54000` when actions are triggered
+- Supports batch operations on multiple selected `.token` files
+
+### 3. Folder Unlocking System
+- Detects when folders starting with `LOCKED-REMOTE-REV-` are opened
+- Extracts Rev address from folder name
+- Launches RevFolderUnlockerApp via custom URL scheme (`f1r3drive://unlock?revAddress=...`)
+- Provides secure private key input interface
+
+### 4. gRPC Service Architecture
+- Protocol buffer-based communication
+- Supports `SubmitAction` for menu actions (CHANGE, COMBINE)
+- Supports `UnlockWalletFolder` for folder unlocking operations
+- Async/await implementation with proper error handling
 
 ## Setup & Development
 
 ### Prerequisites
-- [Xcode](https://developer.apple.com/xcode/) (latest recommended)
-- macOS with support for Finder Sync extensions
+- **Xcode** (latest recommended)
+- **macOS** with Finder Sync extension support
+- **MacFUSE** (for testing mount detection features)
+- **gRPC server** running on `localhost:54000` (for full functionality)
 
-### Running Locally
+### Building and Running
 
 1. **Clone the repository:**
-   ```sh
-   git clone <your-repo-url>
+   ```bash
+   git clone <repository-url>
    cd contextmenu
    ```
-2. **Open the project in Xcode:**
-   - Open [`contextmenu.xcodeproj`](contextmenu.xcodeproj/) in Xcode.
-3. **Build the app and extension:**
-   - Select the `contextmenu` scheme and build (⌘B).
-   - Select the `FinderSyncExtension` extension scheme and build if needed.
-4. **Enable the Finder Sync extension:**
-   - Go to **System Settings > Privacy & Security > Extensions > Finder Extensions**.
-   - Enable the `FinderSyncExtension` extension.
-5. **Run the app:**
-   - Run the `contextmenu` app from Xcode (⌘R) for UI testing or development.
-   - The Finder Sync extension will be available in Finder context menus for `.token` files.
-6. **Testing:**
-   - Run unit and UI tests using Xcode's test navigator.
-   - Test the context menu by right-clicking `.token` files in Finder and selecting **Change**.
 
-## Contribution & Rules
+2. **Open in Xcode:**
+   ```bash
+   open F1r3driveExtensions.xcodeproj
+   ```
 
-- Follow the guidelines in [`.cursor/rules/`](.cursor/rules/) for project structure and contributions.
-- Keep code simple, focused, and well-documented.
-- See [`contextmenuTests/`](contextmenuTests/) and [`contextmenuUITests/`](contextmenuUITests/) for test examples.
+3. **Build all targets:**
+   - Build the `contextmenu` scheme
+   - Build the `FinderSyncExtension` scheme  
+   - Build the `RevFolderUnlockerApp` scheme
+
+4. **Enable Finder Sync Extension:**
+   - Go to **System Settings > Privacy & Security > Extensions > Finder Extensions**
+   - Enable the `FinderSyncExtension` extension
+
+5. **Install RevFolderUnlockerApp:**
+   ```bash
+   # Copy the built app to Applications folder
+   cp -r ~/Library/Developer/Xcode/DerivedData/*/Build/Products/Debug/RevFolderUnlockerApp.app /Applications/
+   ```
+
+### Testing
+
+**Context Menu Testing:**
+1. Create test `.token` files in a MacFUSE mount
+2. Right-click on `.token` files in Finder
+3. Look for "Change" option in context menu
+
+**Folder Unlocking Testing:**
+1. Create a folder named `LOCKED-REMOTE-REV-<some-address>`
+2. Navigate to the folder in Finder
+3. The RevFolderUnlockerApp should launch automatically
+
+**URL Scheme Testing:**
+```bash
+open "f1r3drive://unlock?revAddress=1111LAd2PWaHsw84gxarNx99YVK2aZhCThhrPsWTV7cs1BPcvHftP"
+```
+
+### gRPC Service Integration
+
+For full functionality, ensure a gRPC server is running on `localhost:54000` that implements the `FinderSyncExtensionService` protocol defined in [`Protos/FinderSyncExntesionService.proto`](Protos/FinderSyncExntesionService.proto).
+
+## Dependencies
+
+The project uses the following Swift packages:
+- **gRPC Swift**: For service communication
+- **SwiftProtobuf**: For protocol buffer support
+- **SwiftNIO**: For networking (HTTP/2 transport)
+
+## Bundle Identifiers
+
+- Main app: `io.f1r3fly.f1r3drive.contextmenu`
+- Finder extension: `io.f1r3fly.f1r3drive.contextmenu.FinderSyncExtension`
+- Folder unlocker: `io.f1r3fly.f1r3drive.RevFolderUnlockerApp`
+
+## URL Schemes
+
+- **f1r3drive**: Handled by RevFolderUnlockerApp for folder unlocking operations
+
+## Contributing
+
+When contributing to this project:
+- Follow Swift coding conventions
+- Test both Finder extension and unlocking app functionality
+- Ensure gRPC integration works properly
+- Update protocol buffer definitions as needed
+- Test with actual MacFUSE mounts when possible
 
