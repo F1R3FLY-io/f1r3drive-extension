@@ -36,11 +36,6 @@ This project provides:
   - [`RevFolderUnlockerApp.entitlements`](RevFolderUnlockerApp/RevFolderUnlockerApp.entitlements): App entitlements
   - [`README.md`](RevFolderUnlockerApp/README.md): Detailed documentation for the unlocking app
 
-- **[`RevFolderUnlocker/`](RevFolderUnlocker/)** — Alternative implementation of folder unlocker
-  - [`ContentView.swift`](RevFolderUnlocker/ContentView.swift): SwiftUI interface for unlocking
-  - [`RevFolderUnlockerApp.swift`](RevFolderUnlocker/RevFolderUnlockerApp.swift): App implementation
-  - [`README.md`](RevFolderUnlocker/README.md): Component documentation
-
 ### Protocol Definitions & Configuration
 
 - **[`Protos/`](Protos/)** — gRPC service definitions
