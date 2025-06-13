@@ -45,6 +45,8 @@ TROUBLESHOOTING:
 - If "File Providers" section is missing or empty, manually run RevFolderUnlockerApp 
   from the Applications folder first, then check Extensions again
 - The extension must be enabled to see context menu actions on .token files
+- If RevFolderUnlockerApp is not popping up when opening locked folders, restart Finder:
+  Press Cmd+Option+Esc → Select Finder → Click Relaunch
 - Ensure you have proper permissions for the mounted volumes
 
 FEATURES:
