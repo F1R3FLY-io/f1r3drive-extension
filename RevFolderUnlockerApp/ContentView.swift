@@ -46,25 +46,28 @@ struct ContentView: View {
                     .multilineTextAlignment(.center)
                 
                 // Address Display
-                VStack(spacing: 8) {
+                VStack(alignment: .leading, spacing: 8) {
                     HStack {
-                        Image(systemName: "key.fill")
-                            .foregroundColor(.blue)
-                            .font(.caption)
                         Text("Rev Address")
                             .font(.caption)
-                            .fontWeight(.medium)
                             .foregroundColor(.secondary)
+                        Spacer()
                     }
                     
                     Button(action: copyAddress) {
                         HStack(spacing: 8) {
+                            Image(systemName: "key.fill")
+                                .foregroundColor(.blue)
+                                .font(.caption)
+                            
                             Text(revAddress)
                                 .font(.system(.body, design: .monospaced))
                                 .fontWeight(.medium)
                                 .foregroundColor(.primary)
                                 .lineLimit(1)
                                 .truncationMode(.middle)
+                            
+                            Spacer()
                             
                             Image(systemName: showCopiedFeedback ? "checkmark" : "doc.on.doc")
                                 .foregroundColor(showCopiedFeedback ? .green : .blue)
@@ -97,26 +100,29 @@ struct ContentView: View {
             VStack(spacing: 16) {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
+                        Text("Private Key")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        Spacer()
+                    }
+                    
+                    HStack {
                         Image(systemName: "lock.shield")
                             .foregroundColor(.orange)
                             .font(.caption)
-                        Text("Private Key")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .foregroundColor(.primary)
+                        
+                        SecureField("Enter your private key...", text: $privateKey)
+                            .textFieldStyle(.plain)
+                            .focused($isFocused)
+                            .disabled(isUnlocking)
                     }
-                    
-                    SecureField("Enter your private key...", text: $privateKey)
-                        .textFieldStyle(.plain)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 10)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color.gray.opacity(0.05))
-                                .stroke(privateKey.isEmpty ? Color.gray.opacity(0.3) : Color.blue.opacity(0.5), lineWidth: 1)
-                        )
-                        .focused($isFocused)
-                        .disabled(isUnlocking)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color.gray.opacity(0.05))
+                            .stroke(privateKey.isEmpty ? Color.gray.opacity(0.3) : Color.blue.opacity(0.5), lineWidth: 1)
+                    )
                 }
                 
                 // Error Message
@@ -159,7 +165,8 @@ struct ContentView: View {
             }
             .padding(.horizontal, 24)
             
-            Spacer()
+            // 40px spacing
+            .padding(.bottom, 40)
             
             // Action Buttons
             HStack(spacing: 12) {

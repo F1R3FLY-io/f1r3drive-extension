@@ -15,13 +15,6 @@
 		2145A52A2DDF599D0058E20A /* GRPCCodeGen in Frameworks */ = {isa = PBXBuildFile; productRef = 2145A5292DDF599D0058E20A /* GRPCCodeGen */; };
 		21803EBD2DCCDBFB00522CF4 /* FinderSyncExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 21803EB52DCCDBFB00522CF4 /* FinderSyncExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		21803EC42DCCE8CE00522CF4 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21803EC32DCCE8CE00522CF4 /* Media.xcassets */; };
-		21803EC52DCCE8CE00522CF4 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21803EC32DCCE8CE00522CF4 /* Media.xcassets */; };
-		21BA852E2DD66596000C2641 /* contextmenuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA852C2DD66596000C2641 /* contextmenuApp.swift */; };
-		21BA852F2DD66596000C2641 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA852A2DD66596000C2641 /* ContentView.swift */; };
-		21BA85302DD66596000C2641 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21BA85292DD66596000C2641 /* Assets.xcassets */; };
-		21BA85312DD66596000C2641 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21BA85292DD66596000C2641 /* Assets.xcassets */; };
-		21BA85322DD66596000C2641 /* contextmenuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA852C2DD66596000C2641 /* contextmenuApp.swift */; };
-		21BA85332DD66596000C2641 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BA852A2DD66596000C2641 /* ContentView.swift */; };
 		21E37BFC2DF8664800D675E4 /* GRPCCodeGen in Frameworks */ = {isa = PBXBuildFile; productRef = 21E37BFB2DF8664800D675E4 /* GRPCCodeGen */; };
 		21E37BFE2DF8664800D675E4 /* GRPCCore in Frameworks */ = {isa = PBXBuildFile; productRef = 21E37BFD2DF8664800D675E4 /* GRPCCore */; };
 		21E37C002DF8664800D675E4 /* GRPCInProcessTransport in Frameworks */ = {isa = PBXBuildFile; productRef = 21E37BFF2DF8664800D675E4 /* GRPCInProcessTransport */; };
@@ -29,27 +22,11 @@
 		21E37C042DF8664800D675E4 /* GRPCNIOTransportHTTP2 in Frameworks */ = {isa = PBXBuildFile; productRef = 21E37C032DF8664800D675E4 /* GRPCNIOTransportHTTP2 */; };
 		21E37C062DF8665600D675E4 /* NIO in Frameworks */ = {isa = PBXBuildFile; productRef = 21E37C052DF8665600D675E4 /* NIO */; };
 		21E37C0B2DF866B100D675E4 /* grpc-swift-proto-generator-config.json in Resources */ = {isa = PBXBuildFile; fileRef = 21FD903B2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json */; };
-		21F1755F2DD483C100B03A75 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 21F1755E2DD483C100B03A75 /* README.md */; };
 		21F175602DD483C100B03A75 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 21F1755E2DD483C100B03A75 /* README.md */; };
 		21FD903C2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json in Resources */ = {isa = PBXBuildFile; fileRef = 21FD903B2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json */; };
-		21FD903D2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json in Resources */ = {isa = PBXBuildFile; fileRef = 21FD903B2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		21803E952DCCDB2B00522CF4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21803E7E2DCCDB2A00522CF4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 21803E852DCCDB2A00522CF4;
-			remoteInfo = contextmenu;
-		};
-		21803E9F2DCCDB2B00522CF4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 21803E7E2DCCDB2A00522CF4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 21803E852DCCDB2A00522CF4;
-			remoteInfo = contextmenu;
-		};
 		21803EBB2DCCDBFB00522CF4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 21803E7E2DCCDB2A00522CF4 /* Project object */;
@@ -74,16 +51,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		21803E862DCCDB2A00522CF4 /* contextmenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = contextmenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		21803E942DCCDB2B00522CF4 /* contextmenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contextmenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		21803E9E2DCCDB2B00522CF4 /* contextmenuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contextmenuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21803EB52DCCDBFB00522CF4 /* FinderSyncExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FinderSyncExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		21803EC32DCCE8CE00522CF4 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		2198B3BF2DE5DA2D00964B06 /* RevFolderUnlockerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RevFolderUnlockerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		21BA85292DD66596000C2641 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		21BA852A2DD66596000C2641 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		21BA852B2DD66596000C2641 /* contextmenu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = contextmenu.entitlements; sourceTree = "<group>"; };
-		21BA852C2DD66596000C2641 /* contextmenuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contextmenuApp.swift; sourceTree = "<group>"; };
 		21F1755E2DD483C100B03A75 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		21FD903B2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "grpc-swift-proto-generator-config.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,27 +101,6 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		21803E832DCCDB2A00522CF4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21803E912DCCDB2B00522CF4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21803E9B2DCCDB2B00522CF4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		21803EB22DCCDBFB00522CF4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -191,7 +140,6 @@
 		21803E7D2DCCDB2A00522CF4 = {
 			isa = PBXGroup;
 			children = (
-				21BA852D2DD66596000C2641 /* contextmenu */,
 				21FD903B2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json */,
 				21F1756F2DD4864B00B03A75 /* Protos */,
 				21F1755E2DD483C100B03A75 /* README.md */,
@@ -206,93 +154,15 @@
 		21803E872DCCDB2A00522CF4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				21803E862DCCDB2A00522CF4 /* contextmenu.app */,
-				21803E942DCCDB2B00522CF4 /* contextmenuTests.xctest */,
-				21803E9E2DCCDB2B00522CF4 /* contextmenuUITests.xctest */,
 				21803EB52DCCDBFB00522CF4 /* FinderSyncExtension.appex */,
 				2198B3BF2DE5DA2D00964B06 /* RevFolderUnlockerApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		21BA852D2DD66596000C2641 /* contextmenu */ = {
-			isa = PBXGroup;
-			children = (
-				21BA85292DD66596000C2641 /* Assets.xcassets */,
-				21BA852A2DD66596000C2641 /* ContentView.swift */,
-				21BA852B2DD66596000C2641 /* contextmenu.entitlements */,
-				21BA852C2DD66596000C2641 /* contextmenuApp.swift */,
-			);
-			path = contextmenu;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		21803E852DCCDB2A00522CF4 /* contextmenu */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 21803EA82DCCDB2B00522CF4 /* Build configuration list for PBXNativeTarget "contextmenu" */;
-			buildPhases = (
-				21803E822DCCDB2A00522CF4 /* Sources */,
-				21803E832DCCDB2A00522CF4 /* Frameworks */,
-				21803E842DCCDB2A00522CF4 /* Resources */,
-				21803EC22DCCDBFB00522CF4 /* Embed Foundation Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				21803EBC2DCCDBFB00522CF4 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				21F1756F2DD4864B00B03A75 /* Protos */,
-			);
-			name = contextmenu;
-			packageProductDependencies = (
-			);
-			productName = contextmenu;
-			productReference = 21803E862DCCDB2A00522CF4 /* contextmenu.app */;
-			productType = "com.apple.product-type.application";
-		};
-		21803E932DCCDB2B00522CF4 /* contextmenuTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 21803EAB2DCCDB2B00522CF4 /* Build configuration list for PBXNativeTarget "contextmenuTests" */;
-			buildPhases = (
-				21803E902DCCDB2B00522CF4 /* Sources */,
-				21803E912DCCDB2B00522CF4 /* Frameworks */,
-				21803E922DCCDB2B00522CF4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				21803E962DCCDB2B00522CF4 /* PBXTargetDependency */,
-			);
-			name = contextmenuTests;
-			packageProductDependencies = (
-			);
-			productName = contextmenuTests;
-			productReference = 21803E942DCCDB2B00522CF4 /* contextmenuTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		21803E9D2DCCDB2B00522CF4 /* contextmenuUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 21803EAE2DCCDB2B00522CF4 /* Build configuration list for PBXNativeTarget "contextmenuUITests" */;
-			buildPhases = (
-				21803E9A2DCCDB2B00522CF4 /* Sources */,
-				21803E9B2DCCDB2B00522CF4 /* Frameworks */,
-				21803E9C2DCCDB2B00522CF4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				21803EA02DCCDB2B00522CF4 /* PBXTargetDependency */,
-			);
-			name = contextmenuUITests;
-			packageProductDependencies = (
-			);
-			productName = contextmenuUITests;
-			productReference = 21803E9E2DCCDB2B00522CF4 /* contextmenuUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		21803EB42DCCDBFB00522CF4 /* FinderSyncExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21803EBF2DCCDBFB00522CF4 /* Build configuration list for PBXNativeTarget "FinderSyncExtension" */;
@@ -330,11 +200,13 @@
 				2198B3BB2DE5DA2D00964B06 /* Sources */,
 				2198B3BC2DE5DA2D00964B06 /* Frameworks */,
 				2198B3BD2DE5DA2D00964B06 /* Resources */,
+				21803EC22DCCDBFB00522CF4 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				21E37C082DF8669300D675E4 /* PBXTargetDependency */,
+				21803EBC2DCCDBFB00522CF4 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				2198B3C02DE5DA2D00964B06 /* RevFolderUnlockerApp */,
@@ -362,17 +234,6 @@
 				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
-					21803E852DCCDB2A00522CF4 = {
-						CreatedOnToolsVersion = 16.3;
-					};
-					21803E932DCCDB2B00522CF4 = {
-						CreatedOnToolsVersion = 16.3;
-						TestTargetID = 21803E852DCCDB2A00522CF4;
-					};
-					21803E9D2DCCDB2B00522CF4 = {
-						CreatedOnToolsVersion = 16.3;
-						TestTargetID = 21803E852DCCDB2A00522CF4;
-					};
 					21803EB42DCCDBFB00522CF4 = {
 						CreatedOnToolsVersion = 16.3;
 					};
@@ -401,9 +262,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				21803E852DCCDB2A00522CF4 /* contextmenu */,
-				21803E932DCCDB2B00522CF4 /* contextmenuTests */,
-				21803E9D2DCCDB2B00522CF4 /* contextmenuUITests */,
 				21803EB42DCCDBFB00522CF4 /* FinderSyncExtension */,
 				2198B3BE2DE5DA2D00964B06 /* RevFolderUnlockerApp */,
 			);
@@ -411,31 +269,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		21803E842DCCDB2A00522CF4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				21F1755F2DD483C100B03A75 /* README.md in Resources */,
-				21803EC52DCCE8CE00522CF4 /* Media.xcassets in Resources */,
-				21FD903D2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json in Resources */,
-				21BA85302DD66596000C2641 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21803E922DCCDB2B00522CF4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21803E9C2DCCDB2B00522CF4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		21803EB32DCCDBFB00522CF4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -443,7 +276,6 @@
 				21F175602DD483C100B03A75 /* README.md in Resources */,
 				21803EC42DCCE8CE00522CF4 /* Media.xcassets in Resources */,
 				21FD903C2DD5BEA300C9426B /* grpc-swift-proto-generator-config.json in Resources */,
-				21BA85312DD66596000C2641 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,35 +290,10 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		21803E822DCCDB2A00522CF4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				21BA852E2DD66596000C2641 /* contextmenuApp.swift in Sources */,
-				21BA852F2DD66596000C2641 /* ContentView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21803E902DCCDB2B00522CF4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		21803E9A2DCCDB2B00522CF4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		21803EB12DCCDBFB00522CF4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21BA85322DD66596000C2641 /* contextmenuApp.swift in Sources */,
-				21BA85332DD66596000C2641 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,16 +307,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		21803E962DCCDB2B00522CF4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 21803E852DCCDB2A00522CF4 /* contextmenu */;
-			targetProxy = 21803E952DCCDB2B00522CF4 /* PBXContainerItemProxy */;
-		};
-		21803EA02DCCDB2B00522CF4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 21803E852DCCDB2A00522CF4 /* contextmenu */;
-			targetProxy = 21803E9F2DCCDB2B00522CF4 /* PBXContainerItemProxy */;
-		};
 		21803EBC2DCCDBFB00522CF4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 21803EB42DCCDBFB00522CF4 /* FinderSyncExtension */;
@@ -648,151 +445,26 @@
 			};
 			name = Release;
 		};
-		21803EA92DCCDB2B00522CF4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = contextmenu/contextmenu.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenu;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		21803EAA2DCCDB2B00522CF4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = contextmenu/contextmenu.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenu;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		21803EAC2DCCDB2B00522CF4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenuTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/contextmenu.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/contextmenu";
-			};
-			name = Debug;
-		};
-		21803EAD2DCCDB2B00522CF4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenuTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/contextmenu.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/contextmenu";
-			};
-			name = Release;
-		};
-		21803EAF2DCCDB2B00522CF4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenuUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = contextmenu;
-			};
-			name = Debug;
-		};
-		21803EB02DCCDB2B00522CF4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenuUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = contextmenu;
-			};
-			name = Release;
-		};
 		21803EC02DCCDBFB00522CF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FinderSyncExtension/FinderSyncExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 0.1.0;
+				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FinderSyncExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = FinderSyncExtension;
+				INFOPLIST_KEY_CFBundleDisplayName = FinderExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenu.FinderSyncExtension;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.RevFolderUnlockerApp.FinderSyncExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -806,20 +478,20 @@
 				CODE_SIGN_ENTITLEMENTS = FinderSyncExtension/FinderSyncExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 0.1.0;
+				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FinderSyncExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = FinderSyncExtension;
+				INFOPLIST_KEY_CFBundleDisplayName = FinderExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.contextmenu.FinderSyncExtension;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.RevFolderUnlockerApp.FinderSyncExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -832,22 +504,24 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = RevFolderUnlockerApp/RevFolderUnlockerApp.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1.0;
 				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = RevFolderUnlockerApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.RevFolderUnlockerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -861,22 +535,24 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = RevFolderUnlockerApp/RevFolderUnlockerApp.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.1.0;
 				DEVELOPMENT_TEAM = 7TB7FK5Q5U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = RevFolderUnlockerApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.f1r3fly.f1r3drive.RevFolderUnlockerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -893,33 +569,6 @@
 			buildConfigurations = (
 				21803EA62DCCDB2B00522CF4 /* Debug */,
 				21803EA72DCCDB2B00522CF4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		21803EA82DCCDB2B00522CF4 /* Build configuration list for PBXNativeTarget "contextmenu" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				21803EA92DCCDB2B00522CF4 /* Debug */,
-				21803EAA2DCCDB2B00522CF4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		21803EAB2DCCDB2B00522CF4 /* Build configuration list for PBXNativeTarget "contextmenuTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				21803EAC2DCCDB2B00522CF4 /* Debug */,
-				21803EAD2DCCDB2B00522CF4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		21803EAE2DCCDB2B00522CF4 /* Build configuration list for PBXNativeTarget "contextmenuUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				21803EAF2DCCDB2B00522CF4 /* Debug */,
-				21803EB02DCCDB2B00522CF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
