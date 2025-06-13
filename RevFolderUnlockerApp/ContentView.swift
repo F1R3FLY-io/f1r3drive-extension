@@ -93,11 +93,11 @@ struct ContentView: View {
             .padding(.top, 24)
             .padding(.horizontal, 24)
             
-            Divider()
-                .padding(.vertical, 20)
+            Spacer()
+                .frame(height: 40)
             
             // Input Section
-            VStack(spacing: 16) {
+            VStack(spacing: 12) {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
                         Text("Private Key")
@@ -165,8 +165,8 @@ struct ContentView: View {
             }
             .padding(.horizontal, 24)
             
-            // 40px spacing
-            .padding(.bottom, 40)
+            Spacer()
+                .frame(height: 24)
             
             // Action Buttons
             HStack(spacing: 12) {
