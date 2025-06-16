@@ -134,28 +134,117 @@ service FinderSyncExtensionService {
 
 ## 🧪 Testing
 
+### Build and Runtime Testing
+
+**Build Verification:**
+```bash
+# Build all targets
+xcodebuild -project F1r3driveExtensions.xcodeproj -scheme RevFolderUnlockerApp -configuration Debug build
+xcodebuild -project F1r3driveExtensions.xcodeproj -scheme FinderSyncExtension -configuration Debug build
+
+# Create release build with signing
+./build.sh
+```
+
+**Extension Installation Testing:**
+```bash
+# Install and enable the extension
+cp -r build/RevFolderUnlockerApp.app /Applications/
+open /Applications/RevFolderUnlockerApp.app
+
+# Verify extension is registered (check System Settings > Extensions > File Providers)
+pluginkit -m -A -D -v | grep FinderSyncExtension
+```
+
 ### Manual Testing
 
-**Context Menu:**
+**Context Menu Integration:**
 ```bash
-# Create test environment
+# 1. Create test MacFUSE mount with .token files
 mkdir -p /tmp/test-mount
-# Mount with MacFUSE, create .token files
-# Right-click in Finder to test context menu
+echo "test-token-content" > /tmp/test-mount/test.token
+
+# 2. Mount via MacFUSE (requires actual MacFUSE setup)
+# 3. Navigate to mounted volume in Finder
+# 4. Right-click on .token file
+# 5. Verify "Change" option appears in context menu
 ```
 
-**Folder Unlocking:**
+**Folder Unlocking Workflow:**
 ```bash
-# Create test folder
+# 1. Create test locked folder
 mkdir "LOCKED-REMOTE-REV-1111LAd2PWaHsw84gxarNx99YVK2aZhCThhrPsWTV7cs1BPcvHftP"
-# Navigate in Finder to trigger auto-unlock
+
+# 2. Navigate to folder in Finder
+# 3. Verify RevFolderUnlockerApp launches automatically
+# 4. Test private key input interface
 ```
 
-### Automated Testing
+**URL Scheme Testing:**
+```bash
+# Test custom URL scheme handling
+open "f1r3drive://unlock?revAddress=111129p33f7vaRrpLqK8Nr35Y2aacAjrR5pd6PCzqcdrMuPHzymczH"
 
-- **Unit Tests**: Run `contextmenuTests` target
-- **UI Tests**: Run `contextmenuUITests` target
-- **Integration**: Requires running gRPC server
+# Verify app launches and processes URL parameters
+```
+
+### Integration Testing
+
+**gRPC Service Testing:**
+```bash
+# Requires a mock gRPC server running on localhost:54000
+# Test service endpoints:
+# - SubmitAction (MenuActionRequest)
+# - UnlockWalletFolder (UnlockWalletFolderRequest)
+
+# Start mock server (implementation dependent)
+# Then test extension context menu actions
+```
+
+**MacFUSE Integration:**
+```bash
+# 1. Install MacFUSE
+# 2. Create test mounts with .token files
+# 3. Verify extension detects mounts every 5 seconds
+# 4. Test context menu functionality on mounted volumes
+```
+
+### Development and Debugging
+
+**Xcode Testing:**
+```bash
+# Run individual schemes for debugging
+xcodebuild -project F1r3driveExtensions.xcodeproj -scheme contextmenu -configuration Debug
+
+# Debug FinderSync extension
+xcodebuild -project F1r3driveExtensions.xcodeproj -scheme FinderSyncExtension -configuration Debug
+```
+
+**Console Debugging:**
+```bash
+# Monitor system logs for extension activity
+log stream --predicate 'subsystem contains "io.f1r3fly.f1r3drive"' --level debug
+
+# Check extension loading status
+sudo log show --predicate 'eventMessage contains "FinderSyncExtension"' --last 1h
+```
+
+### Test Automation
+
+**Note**: This project currently lacks automated unit and UI test targets. To add comprehensive testing:
+
+1. **Add Unit Tests**: Create test targets for core functionality
+2. **Add UI Tests**: Test SwiftUI interfaces and user workflows  
+3. **Add Integration Tests**: Test gRPC communication and file system interactions
+4. **CI/CD**: Set up automated testing pipeline with GitHub Actions
+
+**Recommended Test Structure:**
+```
+├── RevFolderUnlockerAppTests/          # Unit tests for main app
+├── FinderSyncExtensionTests/           # Unit tests for extension
+├── F1r3driveExtensionsUITests/         # UI automation tests
+└── IntegrationTests/                   # End-to-end testing
+```
 
 ## 📋 Requirements
 

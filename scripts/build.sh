@@ -4,7 +4,7 @@ set -e
 
 PROJECT_NAME="F1r3driveExtensions"
 SCHEME_MAIN="RevFolderUnlockerApp"
-BUILD_DIR="build"
+BUILD_DIR="../build"
 DMG_NAME="F1r3drive-Extensions"
 
 echo "🧹 Cleaning previous builds..."
@@ -13,7 +13,7 @@ mkdir -p $BUILD_DIR
 
 echo "📦 Building F1r3drive Extensions App (includes FinderSync Extension)..."
 xcodebuild archive \
-  -project $PROJECT_NAME.xcodeproj \
+  -project ../$PROJECT_NAME.xcodeproj \
   -scheme $SCHEME_MAIN \
   -archivePath $BUILD_DIR/$SCHEME_MAIN.xcarchive \
   -configuration Release \
@@ -22,7 +22,7 @@ xcodebuild archive \
 xcodebuild -exportArchive \
   -archivePath $BUILD_DIR/$SCHEME_MAIN.xcarchive \
   -exportPath $BUILD_DIR/$SCHEME_MAIN-Release \
-  -exportOptionsPlist ExportOptions.plist \
+  -exportOptionsPlist ../ExportOptions.plist \
   -quiet
 
 echo "📁 Preparing DMG contents..."
@@ -76,4 +76,4 @@ hdiutil create -volname "$DMG_NAME" \
   $BUILD_DIR/$DMG_NAME.dmg
 
 echo "✅ Build complete! DMG created: $BUILD_DIR/$DMG_NAME.dmg"
-echo "📁 Size: $(du -h $BUILD_DIR/$DMG_NAME.dmg | cut -f1)"
+echo "📁 Size: $(du -h $BUILD_DIR/$DMG_NAME.dmg | cut -f1)" 
