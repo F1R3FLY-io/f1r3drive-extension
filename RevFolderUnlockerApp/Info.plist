@@ -35,5 +35,47 @@
         <string>Viewer</string>
       </dict>
     </array>
+    <key>CFBundleDocumentTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleTypeExtensions</key>
+        <array>
+          <string>token</string>
+        </array>
+        <key>CFBundleTypeIconFile</key>
+        <string>TokenFileIcon</string>
+        <key>CFBundleTypeName</key>
+        <string>F1r3drive Token File</string>
+        <key>CFBundleTypeRole</key>
+        <string>Viewer</string>
+        <key>LSHandlerRank</key>
+        <string>Owner</string>
+        <key>LSItemContentTypes</key>
+        <array>
+          <string>io.f1r3fly.f1r3drive.token</string>
+        </array>
+      </dict>
+    </array>
+    <key>UTExportedTypeDeclarations</key>
+    <array>
+      <dict>
+        <key>UTTypeConformsTo</key>
+        <array>
+          <string>public.data</string>
+          <string>public.item</string>
+        </array>
+        <key>UTTypeDescription</key>
+        <string>F1r3drive Token File</string>
+        <key>UTTypeIdentifier</key>
+        <string>io.f1r3fly.f1r3drive.token</string>
+        <key>UTTypeTagSpecification</key>
+        <dict>
+          <key>public.filename-extension</key>
+          <array>
+            <string>token</string>
+          </array>
+        </dict>
+      </dict>
+    </array>
 </dict>
 </plist>

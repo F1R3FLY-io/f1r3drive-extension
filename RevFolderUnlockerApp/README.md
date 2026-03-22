@@ -22,7 +22,7 @@ A secure macOS application for unlocking Rev address folders with private keys. 
 ### From Source
 ```bash
 # Clone and build the project
-git clone https://github.com/f1r3fly/f1r3drive-extension.git
+git clone https://github.com/f1r3fly-io/f1r3drive-extension.git
 cd f1r3drive-extension
 open F1r3driveExtensions.xcodeproj
 

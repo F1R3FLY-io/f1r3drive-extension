@@ -195,8 +195,15 @@ class FinderSyncExtension: FIFinderSync {
         }
     }
     
-    // Removed toolbarItemName, toolbarItemToolTip, toolbarItemImage
-    // Removed beginObservingDirectory, endObservingDirectory, requestBadgeIdentifier
-    // to keep it minimal and remove the yellow icon and unnecessary logging.
+    // MARK: - Badge identifier for .token files
+    override func requestBadgeIdentifier(for url: URL) {
+        NSLog("FinderSync: requestBadgeIdentifier called for %@", url.path as NSString)
+        
+        // Check if this is a .token file
+        if url.pathExtension.lowercased() == "token" {
+            NSLog("FinderSync: Setting badge for .token file: %@", url.path as NSString)
+            FIFinderSyncController.default().setBadgeIdentifier("f1r3fly_badge", for: url)
+        }
+    }
 }
 
