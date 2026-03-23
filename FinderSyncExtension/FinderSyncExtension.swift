@@ -15,11 +15,17 @@ import Foundation
 
 class FinderSyncExtension: FIFinderSync {
     
+    /// DispatchSource watching /Volumes for filesystem changes (primary mechanism)
+    private var volumesWatcher: DispatchSourceFileSystemObject?
+    
+    /// Coalescing work item to debounce rapid-fire rescan triggers
+    private var pendingRescan: DispatchWorkItem?
+    
     override init() {
         super.init()
         NSLog("FinderSync() launched from %@ :: %@", Bundle.main.bundleIdentifier ?? "Unknown", Bundle.main.bundlePath)
         
-        // Set up mount/unmount notifications
+        // Set up mount/unmount notifications (fast-path, but unreliable in sandbox)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(volumeDidMount(_:)),
@@ -36,46 +42,74 @@ class FinderSyncExtension: FIFinderSync {
         
         // Initial scan for existing mounts
         updateMacFuseMounts()
+        
+        // Primary: Watch /Volumes directory for changes (instant reaction via kqueue)
+        startWatchingVolumes()
     }
     
     deinit {
+        volumesWatcher?.cancel()
+        pendingRescan?.cancel()
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc private func volumeDidMount(_ notification: Notification) {
-        guard let devicePath = notification.userInfo?["NSDevicePath"] as? String,
-              let volumeURL = URL(string: "file://" + devicePath) else {
+    // MARK: - Mount detection: DispatchSource watcher on /Volumes
+    
+    private func startWatchingVolumes() {
+        let fd = open("/Volumes", O_EVTONLY)
+        guard fd >= 0 else {
+            NSLog("FinderSync: Failed to open /Volumes for watching (fd=%d)", fd)
             return
         }
         
-        NSLog("FinderSync: Volume mounted at %@", volumeURL.path as NSString)
+        let source = DispatchSource.makeFileSystemObjectSource(
+            fileDescriptor: fd,
+            eventMask: [.write, .link, .rename],
+            queue: .main
+        )
         
-        // Check if this is a MacFUSE mount
-        if isMacFuseMount(url: volumeURL) {
-            NSLog("FinderSync: Adding MacFUSE mount to observation: %@", volumeURL.path as NSString)
-            
-                    // Add this mount to our observed directories
-        var currentURLs = Set(FIFinderSyncController.default().directoryURLs)
-        currentURLs.insert(volumeURL)
-        FIFinderSyncController.default().directoryURLs = currentURLs
+        source.setEventHandler { [weak self] in
+            self?.scheduleRescan()
         }
+        
+        source.setCancelHandler {
+            close(fd)
+        }
+        
+        source.resume()
+        volumesWatcher = source
+        NSLog("FinderSync: Started watching /Volumes for mount changes")
+    }
+    
+    /// Debounces rapid-fire rescan triggers (e.g. multiple DispatchSource events for a single mount)
+    private func scheduleRescan() {
+        pendingRescan?.cancel()
+        let work = DispatchWorkItem { [weak self] in
+            self?.updateMacFuseMounts()
+        }
+        pendingRescan = work
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: work)
+    }
+    
+    // MARK: - Mount detection: NSWorkspace notifications (fast-path)
+    
+    @objc private func volumeDidMount(_ notification: Notification) {
+        guard let devicePath = notification.userInfo?["NSDevicePath"] as? String else {
+            return
+        }
+        NSLog("FinderSync: Volume mounted at %@", devicePath as NSString)
+        scheduleRescan()
     }
     
     @objc private func volumeDidUnmount(_ notification: Notification) {
-        guard let devicePath = notification.userInfo?["NSDevicePath"] as? String,
-              let volumeURL = URL(string: "file://" + devicePath) else {
+        guard let devicePath = notification.userInfo?["NSDevicePath"] as? String else {
             return
         }
-        
-        NSLog("FinderSync: Volume unmounted at %@", volumeURL.path as NSString)
-        
-        // Remove this mount from our observed directories
-        var currentURLs = Set(FIFinderSyncController.default().directoryURLs)
-        currentURLs.remove(volumeURL)
-        FIFinderSyncController.default().directoryURLs = currentURLs
-        
-        NSLog("FinderSync: Removed mount from observation: %@", volumeURL.path as NSString)
+        NSLog("FinderSync: Volume unmounted at %@", devicePath as NSString)
+        scheduleRescan()
     }
+    
+    // MARK: - Mount scanning
     
     private func isMacFuseMount(url: URL) -> Bool {
         if let resourceValues = try? url.resourceValues(forKeys: [.volumeLocalizedFormatDescriptionKey]),
@@ -87,29 +121,33 @@ class FinderSyncExtension: FIFinderSync {
     
     private func updateMacFuseMounts() {
         // Get all mounted volumes
-        let mountedVolumes = FileManager.default.mountedVolumeURLs(includingResourceValuesForKeys: [.volumeIsRemovableKey, .volumeIsEjectableKey], options: [])
-        NSLog("FinderSync: All mounted volumes: %@", (mountedVolumes ?? []).map { $0.path } as CVarArg)
-        
-        // Log file system type for each mount
-        mountedVolumes?.forEach { url in
-            if let resourceValues = try? url.resourceValues(forKeys: [.volumeLocalizedFormatDescriptionKey]),
-               let fsType = resourceValues.volumeLocalizedFormatDescription {
-                NSLog("FinderSync: Volume %@ has format description: %@", url.path as NSString, fsType as NSString)
-            } else {
-                NSLog("FinderSync: Volume %@ has unknown format description", url.path as NSString)
-            }
-        }
+        let mountedVolumes = FileManager.default.mountedVolumeURLs(
+            includingResourceValuesForKeys: [.volumeIsRemovableKey, .volumeIsEjectableKey, .volumeLocalizedFormatDescriptionKey],
+            options: []
+        )
         
         // Filter for MacFUSE mounts by format description
         let macFuseMounts = mountedVolumes?.filter { url in
             return isMacFuseMount(url: url)
         } ?? []
         
-        if macFuseMounts.isEmpty {
-            NSLog("FinderSync: No MacFUSE mounts found")
-        } else {
-            NSLog("FinderSync: Found MacFUSE mounts: %@", macFuseMounts.map { $0.path } as CVarArg)
-            FIFinderSyncController.default().directoryURLs = Set(macFuseMounts)
+        let newSet = Set(macFuseMounts)
+        let currentSet = FIFinderSyncController.default().directoryURLs ?? Set()
+        
+        // Only update if the set of observed directories actually changed
+        if newSet != currentSet {
+            let added = newSet.subtracting(currentSet)
+            let removed = currentSet.subtracting(newSet)
+            
+            if !added.isEmpty {
+                NSLog("FinderSync: New MacFUSE mounts detected: %@", added.map { $0.path } as CVarArg)
+            }
+            if !removed.isEmpty {
+                NSLog("FinderSync: Stale MacFUSE mounts removed: %@", removed.map { $0.path } as CVarArg)
+            }
+            
+            FIFinderSyncController.default().directoryURLs = newSet
+            NSLog("FinderSync: Now observing %d MacFUSE mount(s): %@", newSet.count, newSet.map { $0.path } as CVarArg)
         }
     }
     
