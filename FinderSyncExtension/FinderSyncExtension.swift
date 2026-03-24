@@ -15,11 +15,17 @@ import Foundation
 
 class FinderSyncExtension: FIFinderSync {
     
+    /// Timer for periodic re-scan of MacFUSE mounts (sandbox workaround)
+    private var pollTimer: Timer?
+    
     /// DispatchSource watching /Volumes for filesystem changes (primary mechanism)
     private var volumesWatcher: DispatchSourceFileSystemObject?
     
     /// Coalescing work item to debounce rapid-fire rescan triggers
     private var pendingRescan: DispatchWorkItem?
+    
+    /// Tracks the unique UUIDs of the currently observed MacFUSE volumes
+    private var lastObservedVolumeIdentifiers: Set<String> = []
     
     override init() {
         super.init()
@@ -40,14 +46,24 @@ class FinderSyncExtension: FIFinderSync {
             object: nil
         )
         
+        // Prevent macOS from gracefully suspending/terminating the extension when idle.
+        // This is necessary because we rely on a background timer to detect new FUSE mounts.
+        ProcessInfo.processInfo.disableAutomaticTermination("F1R3DriveMountWatcher")
+        
         // Initial scan for existing mounts
         updateMacFuseMounts()
         
-        // Primary: Watch /Volumes directory for changes (instant reaction via kqueue)
+        // Primary: Watch /Volumes directory for changes (instant reaction, often blocked by sandbox)
         startWatchingVolumes()
+        
+        // Fallback: Sandbox-safe periodic polling for new mounts
+        pollTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { [weak self] _ in
+            self?.scheduleRescan()
+        }
     }
     
     deinit {
+        pollTimer?.invalidate()
         volumesWatcher?.cancel()
         pendingRescan?.cancel()
         NotificationCenter.default.removeObserver(self)
@@ -122,32 +138,44 @@ class FinderSyncExtension: FIFinderSync {
     private func updateMacFuseMounts() {
         // Get all mounted volumes
         let mountedVolumes = FileManager.default.mountedVolumeURLs(
-            includingResourceValuesForKeys: [.volumeIsRemovableKey, .volumeIsEjectableKey, .volumeLocalizedFormatDescriptionKey],
+            includingResourceValuesForKeys: [.volumeIsRemovableKey, .volumeIsEjectableKey, .volumeLocalizedFormatDescriptionKey, .volumeUUIDStringKey],
             options: []
         )
         
-        // Filter for MacFUSE mounts by format description
+        // Filter for MacFUSE mounts
         let macFuseMounts = mountedVolumes?.filter { url in
             return isMacFuseMount(url: url)
         } ?? []
         
-        let newSet = Set(macFuseMounts)
-        let currentSet = FIFinderSyncController.default().directoryURLs ?? Set()
+        // Extract unique volume identifiers (UUID preferred, path fallback)
+        var currentVolumeIdentifiers: Set<String> = []
+        for url in macFuseMounts {
+            if let uuid = try? url.resourceValues(forKeys: [.volumeUUIDStringKey]).volumeUUIDString {
+                currentVolumeIdentifiers.insert(uuid)
+            } else {
+                currentVolumeIdentifiers.insert(url.path)
+            }
+        }
         
-        // Only update if the set of observed directories actually changed
-        if newSet != currentSet {
-            let added = newSet.subtracting(currentSet)
-            let removed = currentSet.subtracting(newSet)
+        // Only update Finder if the actual physical volume mounts changed
+        if currentVolumeIdentifiers != lastObservedVolumeIdentifiers {
+            NSLog("FinderSync: MacFUSE volume identifiers changed. Forcing Finder to refresh bindings.")
+            lastObservedVolumeIdentifiers = currentVolumeIdentifiers
             
-            if !added.isEmpty {
-                NSLog("FinderSync: New MacFUSE mounts detected: %@", added.map { $0.path } as CVarArg)
-            }
-            if !removed.isEmpty {
-                NSLog("FinderSync: Stale MacFUSE mounts removed: %@", removed.map { $0.path } as CVarArg)
-            }
+            var newSet = Set(macFuseMounts)
+            
+            // CRITICAL: Always observe /Volumes so the extension never loses observation state.
+            // If directoryURLs becomes empty, Finder gracesfully terminates the extension.
+            newSet.insert(URL(fileURLWithPath: "/Volumes"))
+            
+            // CRITICAL: Inject a unique dummy URL to defeat FIFinderSyncController's internal
+            // equality check. If a volume remounts at the EXACT SAME path, URL equality is true,
+            // but the underlying kernel volume object is new. Finder must be forced to re-evaluate it.
+            let dummy = URL(fileURLWithPath: "/tmp/f1r3drive-sync-dummy-\(UUID().uuidString)")
+            newSet.insert(dummy)
             
             FIFinderSyncController.default().directoryURLs = newSet
-            NSLog("FinderSync: Now observing %d MacFUSE mount(s): %@", newSet.count, newSet.map { $0.path } as CVarArg)
+            NSLog("FinderSync: Now observing %d URLs including MacFUSE mounts.", newSet.count)
         }
     }
     
